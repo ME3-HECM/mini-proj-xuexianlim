@@ -7,18 +7,28 @@
 
 #include <xc.h>
 #include "lights.h"
+#include "timers.h"
 #include "interrupts.h"
 #include "comparator.h"
 
 #define _XTAL_FREQ 64000000
 
 void main(void) {
+    //input date and time for initialisation
+    unsigned int year = 2021;
+    char month = 11;
+    char day = 1;
+    char hour = 16; //24-hour time format
+    char minute = 59;
+    
 	//initialisation functions to set up the hardware modules
     Lights_init();
+    Timer0_init();
     Comp1_init();
     Interrupts_init();
     
     while (1) {
-        
+        Timekeeper(&year, &month, &day, &hour, &minute);
+        LEDarray_disp_bin(hour);
     }
 }

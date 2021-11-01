@@ -24259,7 +24259,7 @@ void Lights_init(void)
 void LEDarray_disp_bin(char number)
 {
 
- if (number & 0b00001) {LATGbits.LATG0 = 1;} else {LATGbits.LATG0 = 0;}
+    if (number & 0b00001) {LATGbits.LATG0 = 1;} else {LATGbits.LATG0 = 0;}
     if (number & 0b00010) {LATGbits.LATG1 = 1;} else {LATGbits.LATG1 = 0;}
     if (number & 0b00100) {LATAbits.LATA2 = 1;} else {LATAbits.LATA2 = 0;}
     if (number & 0b01000) {LATFbits.LATF6 = 1;} else {LATFbits.LATF6 = 0;}

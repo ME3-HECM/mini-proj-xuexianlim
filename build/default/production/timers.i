@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "timers.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,15 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-#pragma config FEXTOSC = HS
-#pragma config RSTOSC = EXTOSC_4PLL
-
-
-#pragma config WDTE = OFF
-
-
+# 1 "timers.c" 2
 # 1 "C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24232,53 +24224,72 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
-# 9 "main.c" 2
-# 1 "./lights.h" 1
-# 16 "./lights.h"
-void Lights_init(void);
-void LEDarray_disp_bin(char number);
-# 10 "main.c" 2
+# 2 "timers.c" 2
 # 1 "./timers.h" 1
 # 11 "./timers.h"
 void Timer0_init(void);
 void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute);
-# 11 "main.c" 2
-# 1 "./interrupts.h" 1
-# 12 "./interrupts.h"
-void Interrupts_init(void);
-void __attribute__((picinterrupt(("")))) ISR();
-# 12 "main.c" 2
-# 1 "./comparator.h" 1
+# 3 "timers.c" 2
 
 
 
 
+void Timer0_init(void)
+{
+    T0CON1bits.T0CS=0b010;
+    T0CON1bits.T0ASYNC=1;
+    T0CON1bits.T0CKPS=0b1110;
+    T0CON0bits.T016BIT=1;
+
+
+
+    TMR0H=0b00011011;
+    TMR0L=0b00011110;
+    T0CON0bits.T0EN=1;
+    LATAbits.LATA3 = 0;
+    TRISAbits.TRISA3 = 0;
+}
 
 
 
 
-void DAC_init(void);
-void Comp1_init(void);
-# 13 "main.c" 2
+void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute) {
 
-
-
-void main(void) {
-
-    unsigned int year = 2021;
-    char month = 11;
-    char day = 1;
-    char hour = 16;
-    char minute = 59;
-
-
-    Lights_init();
-    Timer0_init();
-    Comp1_init();
-    Interrupts_init();
-
-    while (1) {
-        Timekeeper(&year, &month, &day, &hour, &minute);
-        LEDarray_disp_bin(hour);
+    char leapyear;
+    if (*pyear % 4 == 0 && *pyear % 100 != 0) {
+        leapyear = 1;
+    } else if (*pyear % 400 == 0) {
+        leapyear = 1;
+    } else {
+        leapyear = 0;
     }
+
+
+    if (LATAbits.LATA3) {++*pminute; LATAbits.LATA3 = 0;}
+
+    if (*pminute == 60) {*pminute = 0; ++*phour;}
+
+    if (*phour == 24) {*phour = 0; ++*pday;}
+
+    if (*pday == 29 && *pmonth == 2 && !leapyear) {
+        *pday = 1;
+        ++*pmonth;
+    }
+
+    if (*pday == 30 && *pmonth == 2 && leapyear) {
+        *pday = 1;
+        ++*pmonth;
+    }
+
+    if (*pday == 31 && (*pmonth == 4 || *pmonth == 6 || *pmonth == 9 || *pmonth == 11)) {
+        *pday = 1;
+        ++*pmonth;
+    }
+
+    if (*pday == 32 && (*pmonth == 1 || *pmonth == 3 || *pmonth == 5 || *pmonth == 7 || *pmonth == 8 || *pmonth == 10 || *pmonth == 12)) {
+        *pday = 1;
+        ++*pmonth;
+    }
+
+    if (*pmonth == 13) {*pmonth = 1; ++*pyear;}
 }

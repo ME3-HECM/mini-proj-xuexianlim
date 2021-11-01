@@ -2155,7 +2155,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;lights.c: 30: {
 [f ]
 "32
-[; ;lights.c: 32:  if (number & 0b00001) {LATGbits.LATG0 = 1;} else {LATGbits.LATG0 = 0;}
+[; ;lights.c: 32:     if (number & 0b00001) {LATGbits.LATG0 = 1;} else {LATGbits.LATG0 = 0;}
 [e $ ! != & -> _number `i -> 1 `i -> 0 `i 2017  ]
 {
 [e = . . _LATGbits 0 0 -> -> 1 `i `uc ]

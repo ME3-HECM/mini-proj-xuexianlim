@@ -29,7 +29,7 @@ void Lights_init(void)
 void LEDarray_disp_bin(char number)
 {
     //turn on/off the pins connected to the LED array
-	if (number & 0b00001) {LED1 = 1;} else {LED1 = 0;}
+    if (number & 0b00001) {LED1 = 1;} else {LED1 = 0;}
     if (number & 0b00010) {LED2 = 1;} else {LED2 = 0;}
     if (number & 0b00100) {LED3 = 1;} else {LED3 = 0;}
     if (number & 0b01000) {LED4 = 1;} else {LED4 = 0;}
