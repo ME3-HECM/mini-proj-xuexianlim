@@ -35,3 +35,16 @@ void LEDarray_disp_bin(char number)
     if (number & 0b01000) {LED4 = 1;} else {LED4 = 0;}
     if (number & 0b10000) {LED5 = 1;} else {LED5 = 0;}
 }
+
+/************************************
+ * Turn the lights off during the small hours of the morning
+************************************/
+void SmallHours(char hour, char minute)
+{
+    if (hour >= 1 && hour < 5) { //between 1 am and 5 am
+        CM1CON0bits.EN = 0; //disable Comparator 1
+        LIGHTS = 0; //turn the lights off
+    }
+        
+    if (hour == 5 && minute == 0) {CM1CON0bits.EN = 1;} //re-enable Comparator 1 at 5 am
+}

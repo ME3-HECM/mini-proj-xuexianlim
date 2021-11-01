@@ -24237,6 +24237,7 @@ unsigned char __t3rd16on(void);
 # 16 "./lights.h"
 void Lights_init(void);
 void LEDarray_disp_bin(char number);
+void SmallHours(char hour, char minute);
 # 10 "main.c" 2
 # 1 "./timers.h" 1
 # 11 "./timers.h"
@@ -24268,7 +24269,7 @@ void main(void) {
     unsigned int year = 2021;
     char month = 11;
     char day = 1;
-    char hour = 16;
+    char hour = 4;
     char minute = 59;
 
 
@@ -24280,5 +24281,6 @@ void main(void) {
     while (1) {
         Timekeeper(&year, &month, &day, &hour, &minute);
         LEDarray_disp_bin(hour);
+        SmallHours(hour, minute);
     }
 }

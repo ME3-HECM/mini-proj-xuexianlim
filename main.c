@@ -18,7 +18,7 @@ void main(void) {
     unsigned int year = 2021;
     char month = 11;
     char day = 1;
-    char hour = 16; //24-hour time format
+    char hour = 4; //24-hour time format
     char minute = 59;
     
 	//initialisation functions to set up the hardware modules
@@ -30,5 +30,6 @@ void main(void) {
     while (1) {
         Timekeeper(&year, &month, &day, &hour, &minute);
         LEDarray_disp_bin(hour);
+        SmallHours(hour, minute);
     }
 }

@@ -18,6 +18,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17 ./lights.h
 [; ;./lights.h: 17: void LEDarray_disp_bin(char number);
 [v _LEDarray_disp_bin `(v ~T0 @X0 0 ef1`uc ]
+"18
+[; ;./lights.h: 18: void SmallHours(char hour, char minute);
+[v _SmallHours `(v ~T0 @X0 0 ef2`uc`uc ]
 "2 main.c
 [p x FEXTOSC  =  HS  ]
 "3
@@ -2018,9 +2021,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _day `uc ~T0 @X0 1 a ]
 [e = _day -> -> 1 `i `uc ]
 "21
-[; ;main.c: 21:     char hour = 16;
+[; ;main.c: 21:     char hour = 4;
 [v _hour `uc ~T0 @X0 1 a ]
-[e = _hour -> -> 16 `i `uc ]
+[e = _hour -> -> 4 `i `uc ]
 "22
 [; ;main.c: 22:     char minute = 59;
 [v _minute `uc ~T0 @X0 1 a ]
@@ -2048,12 +2051,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 32:         LEDarray_disp_bin(hour);
 [e ( _LEDarray_disp_bin (1 _hour ]
 "33
-[; ;main.c: 33:     }
+[; ;main.c: 33:         SmallHours(hour, minute);
+[e ( _SmallHours (2 , _hour _minute ]
+"34
+[; ;main.c: 34:     }
 }
 [e :U 2016 ]
 [e $U 2017  ]
 [e :U 2018 ]
-"34
-[; ;main.c: 34: }
+"35
+[; ;main.c: 35: }
 [e :UE 2015 ]
 }

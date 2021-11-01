@@ -24229,6 +24229,7 @@ unsigned char __t3rd16on(void);
 # 16 "./lights.h"
 void Lights_init(void);
 void LEDarray_disp_bin(char number);
+void SmallHours(char hour, char minute);
 # 3 "lights.c" 2
 
 
@@ -24264,4 +24265,17 @@ void LEDarray_disp_bin(char number)
     if (number & 0b00100) {LATAbits.LATA2 = 1;} else {LATAbits.LATA2 = 0;}
     if (number & 0b01000) {LATFbits.LATF6 = 1;} else {LATFbits.LATF6 = 0;}
     if (number & 0b10000) {LATAbits.LATA4 = 1;} else {LATAbits.LATA4 = 0;}
+}
+
+
+
+
+void SmallHours(char hour, char minute)
+{
+    if (hour >= 1 && hour < 5) {
+        CM1CON0bits.EN = 0;
+        LATHbits.LATH3 = 0;
+    }
+
+    if (hour == 5 && minute == 0) {CM1CON0bits.EN = 1;}
 }

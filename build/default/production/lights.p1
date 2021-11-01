@@ -119,6 +119,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30072
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30072: extern volatile TRISHbits_t TRISHbits __attribute__((address(0xF88)));
 [v _TRISHbits `VS1391 ~T0 @X0 0 e@3976 ]
+"13931
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 13931:     struct {
+[s S642 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S642 . SYNC HYS . POL . OUT EN ]
+"13940
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 13940:     struct {
+[s S643 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S643 . C1SYNC C1HYS . C1POL . C1OUT C1EN ]
+"13930
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 13930: typedef union {
+[u S641 `S642 1 `S643 1 ]
+[n S641 . . . ]
+"13950
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 13950: extern volatile CM1CON0bits_t CM1CON0bits __attribute__((address(0xED0)));
+[v _CM1CON0bits `VS641 ~T0 @X0 0 e@3792 ]
 "55 C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 55: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -2217,4 +2232,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37
 [; ;lights.c: 37: }
 [e :UE 2016 ]
+}
+"42
+[; ;lights.c: 42: void SmallHours(char hour, char minute)
+[v _SmallHours `(v ~T0 @X0 1 ef2`uc`uc ]
+"43
+[; ;lights.c: 43: {
+{
+[e :U _SmallHours ]
+"42
+[; ;lights.c: 42: void SmallHours(char hour, char minute)
+[v _hour `uc ~T0 @X0 1 r1 ]
+[v _minute `uc ~T0 @X0 1 r2 ]
+"43
+[; ;lights.c: 43: {
+[f ]
+"44
+[; ;lights.c: 44:     if (hour >= 1 && hour < 5) {
+[e $ ! && >= -> _hour `i -> 1 `i < -> _hour `i -> 5 `i 2028  ]
+{
+"45
+[; ;lights.c: 45:         CM1CON0bits.EN = 0;
+[e = . . _CM1CON0bits 0 6 -> -> 0 `i `uc ]
+"46
+[; ;lights.c: 46:         LATHbits.LATH3 = 0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+"47
+[; ;lights.c: 47:     }
+}
+[e :U 2028 ]
+"49
+[; ;lights.c: 49:     if (hour == 5 && minute == 0) {CM1CON0bits.EN = 1;}
+[e $ ! && == -> _hour `i -> 5 `i == -> _minute `i -> 0 `i 2029  ]
+{
+[e = . . _CM1CON0bits 0 6 -> -> 1 `i `uc ]
+}
+[e :U 2029 ]
+"50
+[; ;lights.c: 50: }
+[e :UE 2027 ]
 }
