@@ -24228,7 +24228,8 @@ unsigned char __t3rd16on(void);
 # 1 "./timers.h" 1
 # 11 "./timers.h"
 void Timer0_init(void);
-void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute);
+void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST);
+char LeapYear(unsigned int year);
 # 3 "timers.c" 2
 
 
@@ -24253,30 +24254,22 @@ void Timer0_init(void)
 
 
 
-void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute) {
-
-    char leapyear;
-    if (*pyear % 4 == 0 && *pyear % 100 != 0) {
-        leapyear = 1;
-    } else if (*pyear % 400 == 0) {
-        leapyear = 1;
-    } else {
-        leapyear = 0;
-    }
-
+void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST) {
 
     if (LATAbits.LATA3) {++*pminute; LATAbits.LATA3 = 0;}
 
     if (*pminute == 60) {*pminute = 0; ++*phour;}
 
-    if (*phour == 24) {*phour = 0; ++*pday;}
+    if (*phour == 24) {*phour = 0; ++*pday; ++*pdayofweek;}
 
-    if (*pday == 29 && *pmonth == 2 && !leapyear) {
+    if (*pdayofweek == 8) {*pdayofweek = 1;}
+
+    if (*pday == 29 && *pmonth == 2 && !LeapYear(*pyear)) {
         *pday = 1;
         ++*pmonth;
     }
 
-    if (*pday == 30 && *pmonth == 2 && leapyear) {
+    if (*pday == 30 && *pmonth == 2 && LeapYear(*pyear)) {
         *pday = 1;
         ++*pmonth;
     }
@@ -24292,4 +24285,31 @@ void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char
     }
 
     if (*pmonth == 13) {*pmonth = 1; ++*pyear;}
+
+
+    if (*pmonth == 3 && *pday >= 25 && *phour == 1 && *pdayofweek == 7) {
+        ++*phour;
+        *DST = 1;
+    }
+
+    if (*pmonth == 10 && *pday >=25 && *phour == 2 && *pdayofweek == 7 && *DST) {
+        --*phour;
+        *DST = 0;
+    }
+}
+
+
+
+
+char LeapYear(unsigned int year)
+{
+    char leapyear;
+    if (year % 4 == 0 && year % 100 != 0) {
+        leapyear = 1;
+    } else if (year % 400 == 0) {
+        leapyear = 1;
+    } else {
+        leapyear = 0;
+    }
+    return leapyear;
 }

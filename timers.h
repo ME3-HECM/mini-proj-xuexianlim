@@ -9,6 +9,7 @@
 
 //function prototypes
 void Timer0_init(void);
-void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute);
+void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST);
+char LeapYear(unsigned int year);
 
 #endif

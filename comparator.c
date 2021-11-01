@@ -2,12 +2,12 @@
 #include "comparator.h"
 
 /************************************
- * Function to set up DAC for use by the comparator module
+ * Set up DAC for use by the comparator module
 ************************************/
 void DAC_init(void)
 {
     DAC1CON0bits.PSS = 0b00; //3.3V for positive source (Vdd)
-    DAC1CON0bits.NSS = 0b0; //0v for Negative source (Vss))
+    DAC1CON0bits.NSS = 0b0; //0v for Negative source (Vss)
 	//5-bit DAC value to set output voltage
     //min is 0 = 0 V
     //max is 2^5-1 = 31 = 3.3 V
@@ -16,7 +16,7 @@ void DAC_init(void)
 }
 
 /************************************
- * Function to set up comparator to compare RF7 to the DAC output voltage
+ * Set up comparator to compare RF7 to the DAC output voltage
 ************************************/
 void Comp1_init(void)
 {

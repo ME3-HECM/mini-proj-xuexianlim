@@ -13,8 +13,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./interrupts.h: 12: void Interrupts_init(void);
 [v _Interrupts_init `(v ~T0 @X0 0 ef ]
 "12 ./timers.h
-[; ;./timers.h: 12: void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute);
-[v _Timekeeper `(v ~T0 @X0 0 ef5`*ui`*uc`*uc`*uc`*uc ]
+[; ;./timers.h: 12: void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST);
+[v _Timekeeper `(v ~T0 @X0 0 ef7`*ui`*uc`*uc`*uc`*uc`*uc`*uc ]
 "17 ./lights.h
 [; ;./lights.h: 17: void LEDarray_disp_bin(char number);
 [v _LEDarray_disp_bin `(v ~T0 @X0 0 ef1`uc ]
@@ -2021,45 +2021,53 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _day `uc ~T0 @X0 1 a ]
 [e = _day -> -> 1 `i `uc ]
 "21
-[; ;main.c: 21:     char hour = 4;
+[; ;main.c: 21:     char hour = 20;
 [v _hour `uc ~T0 @X0 1 a ]
-[e = _hour -> -> 4 `i `uc ]
+[e = _hour -> -> 20 `i `uc ]
 "22
-[; ;main.c: 22:     char minute = 59;
+[; ;main.c: 22:     char minute = 00;
 [v _minute `uc ~T0 @X0 1 a ]
-[e = _minute -> -> 59 `i `uc ]
-"25
-[; ;main.c: 25:     Lights_init();
-[e ( _Lights_init ..  ]
-"26
-[; ;main.c: 26:     Timer0_init();
-[e ( _Timer0_init ..  ]
+[e = _minute -> -> 0 `i `uc ]
+"23
+[; ;main.c: 23:     char dayofweek = 1;
+[v _dayofweek `uc ~T0 @X0 1 a ]
+[e = _dayofweek -> -> 1 `i `uc ]
+"24
+[; ;main.c: 24:     char DST = 0;
+[v _DST `uc ~T0 @X0 1 a ]
+[e = _DST -> -> 0 `i `uc ]
 "27
-[; ;main.c: 27:     Comp1_init();
-[e ( _Comp1_init ..  ]
+[; ;main.c: 27:     Lights_init();
+[e ( _Lights_init ..  ]
 "28
-[; ;main.c: 28:     Interrupts_init();
-[e ( _Interrupts_init ..  ]
+[; ;main.c: 28:     Timer0_init();
+[e ( _Timer0_init ..  ]
+"29
+[; ;main.c: 29:     Comp1_init();
+[e ( _Comp1_init ..  ]
 "30
-[; ;main.c: 30:     while (1) {
+[; ;main.c: 30:     Interrupts_init();
+[e ( _Interrupts_init ..  ]
+"32
+[; ;main.c: 32:     while (1) {
 [e :U 2017 ]
 {
-"31
-[; ;main.c: 31:         Timekeeper(&year, &month, &day, &hour, &minute);
-[e ( _Timekeeper (4 , , , , &U _year &U _month &U _day &U _hour &U _minute ]
-"32
-[; ;main.c: 32:         LEDarray_disp_bin(hour);
-[e ( _LEDarray_disp_bin (1 _hour ]
 "33
-[; ;main.c: 33:         SmallHours(hour, minute);
-[e ( _SmallHours (2 , _hour _minute ]
+[; ;main.c: 33:         Timekeeper(&year, &month, &day, &hour, &minute, &dayofweek, &DST);
+[e ( _Timekeeper (4 , , , , , , &U _year &U _month &U _day &U _hour &U _minute &U _dayofweek &U _DST ]
 "34
-[; ;main.c: 34:     }
+[; ;main.c: 34:         LEDarray_disp_bin(hour);
+[e ( _LEDarray_disp_bin (1 _hour ]
+"35
+[; ;main.c: 35:         SmallHours(hour, minute);
+[e ( _SmallHours (2 , _hour _minute ]
+"36
+[; ;main.c: 36:     }
 }
 [e :U 2016 ]
 [e $U 2017  ]
 [e :U 2018 ]
-"35
-[; ;main.c: 35: }
+"37
+[; ;main.c: 37: }
 [e :UE 2015 ]
 }

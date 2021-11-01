@@ -24242,7 +24242,8 @@ void SmallHours(char hour, char minute);
 # 1 "./timers.h" 1
 # 11 "./timers.h"
 void Timer0_init(void);
-void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute);
+void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST);
+char LeapYear(unsigned int year);
 # 11 "main.c" 2
 # 1 "./interrupts.h" 1
 # 12 "./interrupts.h"
@@ -24269,8 +24270,10 @@ void main(void) {
     unsigned int year = 2021;
     char month = 11;
     char day = 1;
-    char hour = 4;
-    char minute = 59;
+    char hour = 20;
+    char minute = 00;
+    char dayofweek = 1;
+    char DST = 0;
 
 
     Lights_init();
@@ -24279,7 +24282,7 @@ void main(void) {
     Interrupts_init();
 
     while (1) {
-        Timekeeper(&year, &month, &day, &hour, &minute);
+        Timekeeper(&year, &month, &day, &hour, &minute, &dayofweek, &DST);
         LEDarray_disp_bin(hour);
         SmallHours(hour, minute);
     }

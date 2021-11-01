@@ -69,6 +69,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29352
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29352: extern volatile TRISAbits_t TRISAbits __attribute__((address(0xF81)));
 [v _TRISAbits `VS1367 ~T0 @X0 0 e@3969 ]
+"13 ./timers.h
+[; ;./timers.h: 13: char LeapYear(unsigned int year);
+[v _LeapYear `(uc ~T0 @X0 0 ef1`ui ]
 "55 C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 55: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -2083,8 +2086,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2015 ]
 }
 "26
-[; ;timers.c: 26: void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute) {
-[v _Timekeeper `(v ~T0 @X0 1 ef5`*ui`*uc`*uc`*uc`*uc ]
+[; ;timers.c: 26: void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST) {
+[v _Timekeeper `(v ~T0 @X0 1 ef7`*ui`*uc`*uc`*uc`*uc`*uc`*uc ]
 {
 [e :U _Timekeeper ]
 [v _pyear `*ui ~T0 @X0 1 r1 ]
@@ -2092,130 +2095,189 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _pday `*uc ~T0 @X0 1 r3 ]
 [v _phour `*uc ~T0 @X0 1 r4 ]
 [v _pminute `*uc ~T0 @X0 1 r5 ]
+[v _pdayofweek `*uc ~T0 @X0 1 r6 ]
+[v _DST `*uc ~T0 @X0 1 r7 ]
 [f ]
 "28
-[; ;timers.c: 28:     char leapyear;
-[v _leapyear `uc ~T0 @X0 1 a ]
-"29
-[; ;timers.c: 29:     if (*pyear % 4 == 0 && *pyear % 100 != 0) {
-[e $ ! && == % *U _pyear -> -> 4 `i `ui -> -> 0 `i `ui != % *U _pyear -> -> 100 `i `ui -> -> 0 `i `ui 2017  ]
-{
-"30
-[; ;timers.c: 30:         leapyear = 1;
-[e = _leapyear -> -> 1 `i `uc ]
-"31
-[; ;timers.c: 31:     } else if (*pyear % 400 == 0) {
-}
-[e $U 2018  ]
-[e :U 2017 ]
-[e $ ! == % *U _pyear -> -> 400 `i `ui -> -> 0 `i `ui 2019  ]
-{
-"32
-[; ;timers.c: 32:         leapyear = 1;
-[e = _leapyear -> -> 1 `i `uc ]
-"33
-[; ;timers.c: 33:     } else {
-}
-[e $U 2020  ]
-[e :U 2019 ]
-{
-"34
-[; ;timers.c: 34:         leapyear = 0;
-[e = _leapyear -> -> 0 `i `uc ]
-"35
-[; ;timers.c: 35:     }
-}
-[e :U 2020 ]
-[e :U 2018 ]
-"38
-[; ;timers.c: 38:     if (LATAbits.LATA3) {++*pminute; LATAbits.LATA3 = 0;}
-[e $ ! != -> . . _LATAbits 0 3 `i -> 0 `i 2021  ]
+[; ;timers.c: 28:     if (LATAbits.LATA3) {++*pminute; LATAbits.LATA3 = 0;}
+[e $ ! != -> . . _LATAbits 0 3 `i -> 0 `i 2017  ]
 {
 [e =+ *U _pminute -> -> 1 `i `uc ]
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
 }
-[e :U 2021 ]
-"40
-[; ;timers.c: 40:     if (*pminute == 60) {*pminute = 0; ++*phour;}
-[e $ ! == -> *U _pminute `i -> 60 `i 2022  ]
+[e :U 2017 ]
+"30
+[; ;timers.c: 30:     if (*pminute == 60) {*pminute = 0; ++*phour;}
+[e $ ! == -> *U _pminute `i -> 60 `i 2018  ]
 {
 [e = *U _pminute -> -> 0 `i `uc ]
 [e =+ *U _phour -> -> 1 `i `uc ]
 }
-[e :U 2022 ]
-"42
-[; ;timers.c: 42:     if (*phour == 24) {*phour = 0; ++*pday;}
-[e $ ! == -> *U _phour `i -> 24 `i 2023  ]
+[e :U 2018 ]
+"32
+[; ;timers.c: 32:     if (*phour == 24) {*phour = 0; ++*pday; ++*pdayofweek;}
+[e $ ! == -> *U _phour `i -> 24 `i 2019  ]
 {
 [e = *U _phour -> -> 0 `i `uc ]
 [e =+ *U _pday -> -> 1 `i `uc ]
+[e =+ *U _pdayofweek -> -> 1 `i `uc ]
+}
+[e :U 2019 ]
+"34
+[; ;timers.c: 34:     if (*pdayofweek == 8) {*pdayofweek = 1;}
+[e $ ! == -> *U _pdayofweek `i -> 8 `i 2020  ]
+{
+[e = *U _pdayofweek -> -> 1 `i `uc ]
+}
+[e :U 2020 ]
+"36
+[; ;timers.c: 36:     if (*pday == 29 && *pmonth == 2 && !LeapYear(*pyear)) {
+[e $ ! && && == -> *U _pday `i -> 29 `i == -> *U _pmonth `i -> 2 `i ! != -> ( _LeapYear (1 *U _pyear `i -> 0 `i 2021  ]
+{
+"37
+[; ;timers.c: 37:         *pday = 1;
+[e = *U _pday -> -> 1 `i `uc ]
+"38
+[; ;timers.c: 38:         ++*pmonth;
+[e =+ *U _pmonth -> -> 1 `i `uc ]
+"39
+[; ;timers.c: 39:     }
+}
+[e :U 2021 ]
+"41
+[; ;timers.c: 41:     if (*pday == 30 && *pmonth == 2 && LeapYear(*pyear)) {
+[e $ ! && && == -> *U _pday `i -> 30 `i == -> *U _pmonth `i -> 2 `i != -> ( _LeapYear (1 *U _pyear `i -> 0 `i 2022  ]
+{
+"42
+[; ;timers.c: 42:         *pday = 1;
+[e = *U _pday -> -> 1 `i `uc ]
+"43
+[; ;timers.c: 43:         ++*pmonth;
+[e =+ *U _pmonth -> -> 1 `i `uc ]
+"44
+[; ;timers.c: 44:     }
+}
+[e :U 2022 ]
+"46
+[; ;timers.c: 46:     if (*pday == 31 && (*pmonth == 4 || *pmonth == 6 || *pmonth == 9 || *pmonth == 11)) {
+[e $ ! && == -> *U _pday `i -> 31 `i || || || == -> *U _pmonth `i -> 4 `i == -> *U _pmonth `i -> 6 `i == -> *U _pmonth `i -> 9 `i == -> *U _pmonth `i -> 11 `i 2023  ]
+{
+"47
+[; ;timers.c: 47:         *pday = 1;
+[e = *U _pday -> -> 1 `i `uc ]
+"48
+[; ;timers.c: 48:         ++*pmonth;
+[e =+ *U _pmonth -> -> 1 `i `uc ]
+"49
+[; ;timers.c: 49:     }
 }
 [e :U 2023 ]
-"44
-[; ;timers.c: 44:     if (*pday == 29 && *pmonth == 2 && !leapyear) {
-[e $ ! && && == -> *U _pday `i -> 29 `i == -> *U _pmonth `i -> 2 `i ! != -> _leapyear `i -> 0 `i 2024  ]
+"51
+[; ;timers.c: 51:     if (*pday == 32 && (*pmonth == 1 || *pmonth == 3 || *pmonth == 5 || *pmonth == 7 || *pmonth == 8 || *pmonth == 10 || *pmonth == 12)) {
+[e $ ! && == -> *U _pday `i -> 32 `i || || || || || || == -> *U _pmonth `i -> 1 `i == -> *U _pmonth `i -> 3 `i == -> *U _pmonth `i -> 5 `i == -> *U _pmonth `i -> 7 `i == -> *U _pmonth `i -> 8 `i == -> *U _pmonth `i -> 10 `i == -> *U _pmonth `i -> 12 `i 2024  ]
 {
-"45
-[; ;timers.c: 45:         *pday = 1;
+"52
+[; ;timers.c: 52:         *pday = 1;
 [e = *U _pday -> -> 1 `i `uc ]
-"46
-[; ;timers.c: 46:         ++*pmonth;
+"53
+[; ;timers.c: 53:         ++*pmonth;
 [e =+ *U _pmonth -> -> 1 `i `uc ]
-"47
-[; ;timers.c: 47:     }
+"54
+[; ;timers.c: 54:     }
 }
 [e :U 2024 ]
-"49
-[; ;timers.c: 49:     if (*pday == 30 && *pmonth == 2 && leapyear) {
-[e $ ! && && == -> *U _pday `i -> 30 `i == -> *U _pmonth `i -> 2 `i != -> _leapyear `i -> 0 `i 2025  ]
-{
-"50
-[; ;timers.c: 50:         *pday = 1;
-[e = *U _pday -> -> 1 `i `uc ]
-"51
-[; ;timers.c: 51:         ++*pmonth;
-[e =+ *U _pmonth -> -> 1 `i `uc ]
-"52
-[; ;timers.c: 52:     }
-}
-[e :U 2025 ]
-"54
-[; ;timers.c: 54:     if (*pday == 31 && (*pmonth == 4 || *pmonth == 6 || *pmonth == 9 || *pmonth == 11)) {
-[e $ ! && == -> *U _pday `i -> 31 `i || || || == -> *U _pmonth `i -> 4 `i == -> *U _pmonth `i -> 6 `i == -> *U _pmonth `i -> 9 `i == -> *U _pmonth `i -> 11 `i 2026  ]
-{
-"55
-[; ;timers.c: 55:         *pday = 1;
-[e = *U _pday -> -> 1 `i `uc ]
 "56
-[; ;timers.c: 56:         ++*pmonth;
-[e =+ *U _pmonth -> -> 1 `i `uc ]
-"57
-[; ;timers.c: 57:     }
-}
-[e :U 2026 ]
-"59
-[; ;timers.c: 59:     if (*pday == 32 && (*pmonth == 1 || *pmonth == 3 || *pmonth == 5 || *pmonth == 7 || *pmonth == 8 || *pmonth == 10 || *pmonth == 12)) {
-[e $ ! && == -> *U _pday `i -> 32 `i || || || || || || == -> *U _pmonth `i -> 1 `i == -> *U _pmonth `i -> 3 `i == -> *U _pmonth `i -> 5 `i == -> *U _pmonth `i -> 7 `i == -> *U _pmonth `i -> 8 `i == -> *U _pmonth `i -> 10 `i == -> *U _pmonth `i -> 12 `i 2027  ]
-{
-"60
-[; ;timers.c: 60:         *pday = 1;
-[e = *U _pday -> -> 1 `i `uc ]
-"61
-[; ;timers.c: 61:         ++*pmonth;
-[e =+ *U _pmonth -> -> 1 `i `uc ]
-"62
-[; ;timers.c: 62:     }
-}
-[e :U 2027 ]
-"64
-[; ;timers.c: 64:     if (*pmonth == 13) {*pmonth = 1; ++*pyear;}
-[e $ ! == -> *U _pmonth `i -> 13 `i 2028  ]
+[; ;timers.c: 56:     if (*pmonth == 13) {*pmonth = 1; ++*pyear;}
+[e $ ! == -> *U _pmonth `i -> 13 `i 2025  ]
 {
 [e = *U _pmonth -> -> 1 `i `uc ]
 [e =+ *U _pyear -> -> 1 `i `ui ]
 }
-[e :U 2028 ]
+[e :U 2025 ]
+"59
+[; ;timers.c: 59:     if (*pmonth == 3 && *pday >= 25 && *phour == 1 && *pdayofweek == 7) {
+[e $ ! && && && == -> *U _pmonth `i -> 3 `i >= -> *U _pday `i -> 25 `i == -> *U _phour `i -> 1 `i == -> *U _pdayofweek `i -> 7 `i 2026  ]
+{
+"60
+[; ;timers.c: 60:         ++*phour;
+[e =+ *U _phour -> -> 1 `i `uc ]
+"61
+[; ;timers.c: 61:         *DST = 1;
+[e = *U _DST -> -> 1 `i `uc ]
+"62
+[; ;timers.c: 62:     }
+}
+[e :U 2026 ]
+"64
+[; ;timers.c: 64:     if (*pmonth == 10 && *pday >=25 && *phour == 2 && *pdayofweek == 7 && *DST) {
+[e $ ! && && && && == -> *U _pmonth `i -> 10 `i >= -> *U _pday `i -> 25 `i == -> *U _phour `i -> 2 `i == -> *U _pdayofweek `i -> 7 `i != -> *U _DST `i -> 0 `i 2027  ]
+{
 "65
-[; ;timers.c: 65: }
+[; ;timers.c: 65:         --*phour;
+[e =- *U _phour -> -> 1 `i `uc ]
+"66
+[; ;timers.c: 66:         *DST = 0;
+[e = *U _DST -> -> 0 `i `uc ]
+"67
+[; ;timers.c: 67:     }
+}
+[e :U 2027 ]
+"68
+[; ;timers.c: 68: }
 [e :UE 2016 ]
+}
+"73
+[; ;timers.c: 73: char LeapYear(unsigned int year)
+[v _LeapYear `(uc ~T0 @X0 1 ef1`ui ]
+"74
+[; ;timers.c: 74: {
+{
+[e :U _LeapYear ]
+"73
+[; ;timers.c: 73: char LeapYear(unsigned int year)
+[v _year `ui ~T0 @X0 1 r1 ]
+"74
+[; ;timers.c: 74: {
+[f ]
+"75
+[; ;timers.c: 75:     char leapyear;
+[v _leapyear `uc ~T0 @X0 1 a ]
+"76
+[; ;timers.c: 76:     if (year % 4 == 0 && year % 100 != 0) {
+[e $ ! && == % _year -> -> 4 `i `ui -> -> 0 `i `ui != % _year -> -> 100 `i `ui -> -> 0 `i `ui 2029  ]
+{
+"77
+[; ;timers.c: 77:         leapyear = 1;
+[e = _leapyear -> -> 1 `i `uc ]
+"78
+[; ;timers.c: 78:     } else if (year % 400 == 0) {
+}
+[e $U 2030  ]
+[e :U 2029 ]
+[e $ ! == % _year -> -> 400 `i `ui -> -> 0 `i `ui 2031  ]
+{
+"79
+[; ;timers.c: 79:         leapyear = 1;
+[e = _leapyear -> -> 1 `i `uc ]
+"80
+[; ;timers.c: 80:     } else {
+}
+[e $U 2032  ]
+[e :U 2031 ]
+{
+"81
+[; ;timers.c: 81:         leapyear = 0;
+[e = _leapyear -> -> 0 `i `uc ]
+"82
+[; ;timers.c: 82:     }
+}
+[e :U 2032 ]
+[e :U 2030 ]
+"83
+[; ;timers.c: 83:     return leapyear;
+[e ) _leapyear ]
+[e $UE 2028  ]
+"84
+[; ;timers.c: 84: }
+[e :UE 2028 ]
 }
