@@ -24226,10 +24226,21 @@ unsigned char __t3rd16on(void);
 # 34 "C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
 # 2 "timers.c" 2
 # 1 "./timers.h" 1
-# 11 "./timers.h"
+
+
+
+
+
+
+
+
 void Timer0_init(void);
-void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST);
+void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, int *phour, int *pminute, char *pdayofweek, char *pDST);
 char LeapYear(unsigned int year);
+void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
+int TimeDiff(int hour1, int minute1, int hour2, int minute2);
+void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute);
+void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute);
 # 3 "timers.c" 2
 
 
@@ -24247,16 +24258,14 @@ void Timer0_init(void)
     TMR0H=0b00011011;
     TMR0L=0b00011110;
     T0CON0bits.T0EN=1;
-    LATAbits.LATA3 = 0;
-    TRISAbits.TRISA3 = 0;
 }
 
 
 
 
-void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST) {
+void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, int *phour, int *pminute, char *pdayofweek, char *pDST) {
 
-    if (LATAbits.LATA3) {++*pminute; LATAbits.LATA3 = 0;}
+    ++*pminute;
 
     if (*pminute == 60) {*pminute = 0; ++*phour;}
 
@@ -24289,12 +24298,12 @@ void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char
 
     if (*pmonth == 3 && *pday >= 25 && *phour == 1 && *pdayofweek == 7) {
         ++*phour;
-        *DST = 1;
+        *pDST = 1;
     }
 
-    if (*pmonth == 10 && *pday >=25 && *phour == 2 && *pdayofweek == 7 && *DST) {
+    if (*pmonth == 10 && *pday >=25 && *phour == 2 && *pdayofweek == 7 && *pDST) {
         --*phour;
-        *DST = 0;
+        *pDST = 0;
     }
 }
 
@@ -24312,4 +24321,79 @@ char LeapYear(unsigned int year)
         leapyear = 0;
     }
     return leapyear;
+}
+
+
+
+
+void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
+{
+    int avghour;
+    int avgminute;
+
+    if (DST) {*pdawnhour = *pdawnhour - 1; *pduskhour = *pduskhour - 1;}
+    TimeAvg(*pdawnhour, *pdawnminute, *pduskhour, *pduskminute, &avghour, &avgminute);
+    if (DST) {*pdawnhour = *pdawnhour + 1; *pduskhour = *pduskhour + 1;}
+    int timedifference = TimeDiff(avghour, avgminute, 12, 0);
+
+    if (timedifference > 30 || timedifference < -30) {
+        *pminute = timedifference % 60;
+        *pdawnminute = *pdawnminute + timedifference % 60;
+        *pduskminute = *pduskminute + timedifference % 60;
+
+        if (*pminute < 0) {--*phour; *pminute = *pminute + 60;}
+
+        if (*pdawnminute >= 60) {++*pdawnhour; *pdawnminute = *pdawnminute - 60;}
+        else if (*pdawnminute < 0) {--*pdawnhour; *pdawnminute = *pdawnminute + 60;}
+
+        if (*pduskminute >= 60) {++*pduskhour; *pduskminute = *pduskminute - 60;}
+        else if (*pduskminute < 0) {--*pduskhour; *pduskminute = *pduskminute + 60;}
+
+        *phour = 12 + timedifference / 60;
+        *pdawnhour = *pdawnhour + timedifference / 60;
+        *pduskhour = *pduskhour + timedifference / 60;
+    }
+}
+
+
+
+
+int TimeDiff(int hour1, int minute1, int hour2, int minute2)
+{
+    if (hour2 > hour1) {
+        while (hour2 > hour1) {
+            --hour2;
+            minute2 = minute2 + 60;
+        }
+
+    } else if (hour1 > hour2) {
+        while (hour1 > hour2) {
+            --hour1;
+            minute1 = minute1 + 60;
+        }
+    }
+    return minute2 - minute1;
+}
+
+
+
+
+void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute)
+{
+    int HalfTimeDiff = TimeDiff(hour1, minute1, hour2, minute2) / 2;
+
+    *pavghour = hour1 + HalfTimeDiff / 60;
+    *pavgminute = minute1 + HalfTimeDiff % 60;
+
+    if (*pavgminute >= 60) {++*pavghour; *pavgminute = *pavgminute - 60;}
+    else if (*pavgminute < 0) {--*pavghour; *pavgminute = *pavgminute + 60;}
+}
+
+
+
+
+void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute)
+{
+    if (*phour < 12) {*pdawnhour = *phour; *pdawnminute = *pminute;}
+    else {*pduskhour = *phour; *pduskminute = *pminute;}
 }

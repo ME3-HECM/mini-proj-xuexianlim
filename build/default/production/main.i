@@ -24236,17 +24236,28 @@ unsigned char __t3rd16on(void);
 # 1 "./lights.h" 1
 # 16 "./lights.h"
 void Lights_init(void);
-void LEDarray_disp_bin(char number);
-void SmallHours(char hour, char minute);
+void LEDarray_disp_bin(int number);
+void SmallHours(int hour, int minute);
 # 10 "main.c" 2
 # 1 "./timers.h" 1
-# 11 "./timers.h"
+
+
+
+
+
+
+
+
 void Timer0_init(void);
-void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST);
+void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, int *phour, int *pminute, char *pdayofweek, char *pDST);
 char LeapYear(unsigned int year);
+void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
+int TimeDiff(int hour1, int minute1, int hour2, int minute2);
+void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute);
+void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute);
 # 11 "main.c" 2
 # 1 "./interrupts.h" 1
-# 12 "./interrupts.h"
+# 11 "./interrupts.h"
 void Interrupts_init(void);
 void __attribute__((picinterrupt(("")))) ISR();
 # 12 "main.c" 2
@@ -24262,6 +24273,18 @@ void __attribute__((picinterrupt(("")))) ISR();
 void DAC_init(void);
 void Comp1_init(void);
 # 13 "main.c" 2
+# 1 "./flags.h" 1
+
+
+
+
+
+
+
+
+char minutehand = 0;
+char dawndusk = 0;
+# 14 "main.c" 2
 
 
 
@@ -24269,11 +24292,15 @@ void main(void) {
 
     unsigned int year = 2021;
     char month = 11;
-    char day = 1;
-    char hour = 20;
-    char minute = 00;
-    char dayofweek = 1;
+    char day = 2;
+    int hour = 12;
+    int minute = 0;
+    char dayofweek = 2;
     char DST = 0;
+    int dawnhour = 7;
+    int dawnminute = 0;
+    int duskhour = 17;
+    int duskminute = 0;
 
 
     Lights_init();
@@ -24282,8 +24309,22 @@ void main(void) {
     Interrupts_init();
 
     while (1) {
-        Timekeeper(&year, &month, &day, &hour, &minute, &dayofweek, &DST);
+        if (minutehand) {
+            Timekeeper(&year, &month, &day, &hour, &minute, &dayofweek, &DST);
+            minutehand = 0;
+        }
+
         LEDarray_disp_bin(hour);
+
         SmallHours(hour, minute);
+
+        if (dawndusk) {
+            UpdateDawnDusk(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute);
+            dawndusk = 0;
+        }
+
+        if (hour == 12 && minute == 0) {
+            SunPleaseFixTheDamnClock(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute, DST);
+        }
     }
 }

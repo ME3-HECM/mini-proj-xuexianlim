@@ -24226,10 +24226,22 @@ unsigned char __t3rd16on(void);
 # 34 "C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
 # 2 "interrupts.c" 2
 # 1 "./interrupts.h" 1
-# 12 "./interrupts.h"
+# 11 "./interrupts.h"
 void Interrupts_init(void);
 void __attribute__((picinterrupt(("")))) ISR();
 # 3 "interrupts.c" 2
+# 1 "./flags.h" 1
+
+
+
+
+
+
+
+
+char minutehand = 0;
+char dawndusk = 0;
+# 4 "interrupts.c" 2
 
 
 
@@ -24249,15 +24261,15 @@ void Interrupts_init(void)
 void __attribute__((picinterrupt(("")))) ISR()
 {
     if (PIR0bits.TMR0IF == 1) {
-        LATAbits.LATA3 = 1;
+        minutehand = 1;
         TMR0H=0b00011011;
         TMR0L=0b00011110;
         PIR0bits.TMR0IF = 0;
     }
 
     if (PIR2bits.C1IF == 1) {
-        if (CM1CON0bits.OUT) {LATHbits.LATH3 = 1;}
-        else {LATHbits.LATH3 = 0;}
+        if (CM1CON0bits.OUT) {LATHbits.LATH3 = 1; dawndusk = 1;}
+        else {LATHbits.LATH3 = 0; dawndusk = 1;}
         PIR2bits.C1IF = 0;
     }
 }

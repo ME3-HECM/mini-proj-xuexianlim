@@ -57,21 +57,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5103
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 5103: extern volatile PIR0bits_t PIR0bits __attribute__((address(0xE33)));
 [v _PIR0bits `VS285 ~T0 @X0 0 e@3635 ]
-"28475
-[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28475:     struct {
-[s S1340 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1340 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
-"28485
-[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28485:     struct {
-[s S1341 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1341 . LA0 LA1 LA2 LA3 LA4 LA5 LA6 LA7 ]
-"28474
-[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28474: typedef union {
-[u S1339 `S1340 1 `S1341 1 ]
-[n S1339 . . . ]
-"28496
-[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28496: extern volatile LATAbits_t LATAbits __attribute__((address(0xF79)));
-[v _LATAbits `VS1339 ~T0 @X0 0 e@3961 ]
 "39327
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 39327: extern volatile unsigned char TMR0H __attribute__((address(0xFD4)));
 [v _TMR0H `Vuc ~T0 @X0 0 e@4052 ]
@@ -2113,85 +2098,99 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40928
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40928: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"7 interrupts.c
-[; ;interrupts.c: 7: void Interrupts_init(void)
+"9 ./flags.h
+[; ;./flags.h: 9: char minutehand = 0;
+[v _minutehand `uc ~T0 @X0 1 e ]
+[i _minutehand
+-> -> 0 `i `uc
+]
+"10
+[; ;./flags.h: 10: char dawndusk = 0;
+[v _dawndusk `uc ~T0 @X0 1 e ]
+[i _dawndusk
+-> -> 0 `i `uc
+]
+"8 interrupts.c
+[; ;interrupts.c: 8: void Interrupts_init(void)
 [v _Interrupts_init `(v ~T0 @X0 1 ef ]
-"8
-[; ;interrupts.c: 8: {
+"9
+[; ;interrupts.c: 9: {
 {
 [e :U _Interrupts_init ]
 [f ]
-"10
-[; ;interrupts.c: 10:     PIE0bits.TMR0IE = 1;
-[e = . . _PIE0bits 0 5 -> -> 1 `i `uc ]
 "11
-[; ;interrupts.c: 11:     PIE2bits.C1IE = 1;
-[e = . . _PIE2bits 0 0 -> -> 1 `i `uc ]
+[; ;interrupts.c: 11:     PIE0bits.TMR0IE = 1;
+[e = . . _PIE0bits 0 5 -> -> 1 `i `uc ]
 "12
-[; ;interrupts.c: 12:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
+[; ;interrupts.c: 12:     PIE2bits.C1IE = 1;
+[e = . . _PIE2bits 0 0 -> -> 1 `i `uc ]
 "13
-[; ;interrupts.c: 13:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 1 2 -> -> 1 `i `uc ]
+[; ;interrupts.c: 13:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
 "14
-[; ;interrupts.c: 14: }
+[; ;interrupts.c: 14:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 1 2 -> -> 1 `i `uc ]
+"15
+[; ;interrupts.c: 15: }
 [e :UE 2015 ]
 }
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-"19
-[; ;interrupts.c: 19: void __attribute__((picinterrupt(("")))) ISR()
-[v _ISR `(v ~T2 @X0 1 ef ]
 "20
-[; ;interrupts.c: 20: {
+[; ;interrupts.c: 20: void __attribute__((picinterrupt(("")))) ISR()
+[v _ISR `(v ~T2 @X0 1 ef ]
+"21
+[; ;interrupts.c: 21: {
 {
 [e :U _ISR ]
 [f ]
-"21
-[; ;interrupts.c: 21:     if (PIR0bits.TMR0IF == 1) {
+"22
+[; ;interrupts.c: 22:     if (PIR0bits.TMR0IF == 1) {
 [e $ ! == -> . . _PIR0bits 0 5 `i -> 1 `i 2017  ]
 {
-"22
-[; ;interrupts.c: 22:         LATAbits.LATA3 = 1;
-[e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
 "23
-[; ;interrupts.c: 23:         TMR0H=0b00011011;
-[e = _TMR0H -> -> 27 `i `uc ]
+[; ;interrupts.c: 23:         minutehand = 1;
+[e = _minutehand -> -> 1 `i `uc ]
 "24
-[; ;interrupts.c: 24:         TMR0L=0b00011110;
-[e = _TMR0L -> -> 30 `i `uc ]
+[; ;interrupts.c: 24:         TMR0H=0b00011011;
+[e = _TMR0H -> -> 27 `i `uc ]
 "25
-[; ;interrupts.c: 25:         PIR0bits.TMR0IF = 0;
-[e = . . _PIR0bits 0 5 -> -> 0 `i `uc ]
+[; ;interrupts.c: 25:         TMR0L=0b00011110;
+[e = _TMR0L -> -> 30 `i `uc ]
 "26
-[; ;interrupts.c: 26:     }
+[; ;interrupts.c: 26:         PIR0bits.TMR0IF = 0;
+[e = . . _PIR0bits 0 5 -> -> 0 `i `uc ]
+"27
+[; ;interrupts.c: 27:     }
 }
 [e :U 2017 ]
-"28
-[; ;interrupts.c: 28:     if (PIR2bits.C1IF == 1) {
+"29
+[; ;interrupts.c: 29:     if (PIR2bits.C1IF == 1) {
 [e $ ! == -> . . _PIR2bits 0 0 `i -> 1 `i 2018  ]
 {
-"29
-[; ;interrupts.c: 29:         if (CM1CON0bits.OUT) {LATHbits.LATH3 = 1;}
+"30
+[; ;interrupts.c: 30:         if (CM1CON0bits.OUT) {LATHbits.LATH3 = 1; dawndusk = 1;}
 [e $ ! != -> . . _CM1CON0bits 0 5 `i -> 0 `i 2019  ]
 {
 [e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+[e = _dawndusk -> -> 1 `i `uc ]
 }
 [e $U 2020  ]
-"30
-[; ;interrupts.c: 30:         else {LATHbits.LATH3 = 0;}
+"31
+[; ;interrupts.c: 31:         else {LATHbits.LATH3 = 0; dawndusk = 1;}
 [e :U 2019 ]
 {
 [e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+[e = _dawndusk -> -> 1 `i `uc ]
 }
 [e :U 2020 ]
-"31
-[; ;interrupts.c: 31:         PIR2bits.C1IF = 0;
-[e = . . _PIR2bits 0 0 -> -> 0 `i `uc ]
 "32
-[; ;interrupts.c: 32:     }
+[; ;interrupts.c: 32:         PIR2bits.C1IF = 0;
+[e = . . _PIR2bits 0 0 -> -> 0 `i `uc ]
+"33
+[; ;interrupts.c: 33:     }
 }
 [e :U 2018 ]
-"33
-[; ;interrupts.c: 33: }
+"34
+[; ;interrupts.c: 34: }
 [e :UE 2016 ]
 }

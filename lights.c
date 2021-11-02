@@ -26,7 +26,7 @@ void Lights_init(void)
 /************************************
  * Displays a number on the LED array in binary
 ************************************/
-void LEDarray_disp_bin(char number)
+void LEDarray_disp_bin(int number)
 {
     //turn on/off the pins connected to the LED array
     if (number & 0b00001) {LED1 = 1;} else {LED1 = 0;}
@@ -37,9 +37,9 @@ void LEDarray_disp_bin(char number)
 }
 
 /************************************
- * Turn the lights off during the small hours of the morning
+ * Turns the lights off during the small hours of the morning
 ************************************/
-void SmallHours(char hour, char minute)
+void SmallHours(int hour, int minute)
 {
     if (hour >= 1 && hour < 5) { //between 1 am and 5 am
         CM1CON0bits.EN = 0; //disable Comparator 1

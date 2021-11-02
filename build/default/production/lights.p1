@@ -2157,21 +2157,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2015 ]
 }
 "29
-[; ;lights.c: 29: void LEDarray_disp_bin(char number)
-[v _LEDarray_disp_bin `(v ~T0 @X0 1 ef1`uc ]
+[; ;lights.c: 29: void LEDarray_disp_bin(int number)
+[v _LEDarray_disp_bin `(v ~T0 @X0 1 ef1`i ]
 "30
 [; ;lights.c: 30: {
 {
 [e :U _LEDarray_disp_bin ]
 "29
-[; ;lights.c: 29: void LEDarray_disp_bin(char number)
-[v _number `uc ~T0 @X0 1 r1 ]
+[; ;lights.c: 29: void LEDarray_disp_bin(int number)
+[v _number `i ~T0 @X0 1 r1 ]
 "30
 [; ;lights.c: 30: {
 [f ]
 "32
 [; ;lights.c: 32:     if (number & 0b00001) {LATGbits.LATG0 = 1;} else {LATGbits.LATG0 = 0;}
-[e $ ! != & -> _number `i -> 1 `i -> 0 `i 2017  ]
+[e $ ! != & _number -> 1 `i -> 0 `i 2017  ]
 {
 [e = . . _LATGbits 0 0 -> -> 1 `i `uc ]
 }
@@ -2183,7 +2183,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2018 ]
 "33
 [; ;lights.c: 33:     if (number & 0b00010) {LATGbits.LATG1 = 1;} else {LATGbits.LATG1 = 0;}
-[e $ ! != & -> _number `i -> 2 `i -> 0 `i 2019  ]
+[e $ ! != & _number -> 2 `i -> 0 `i 2019  ]
 {
 [e = . . _LATGbits 0 1 -> -> 1 `i `uc ]
 }
@@ -2195,7 +2195,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2020 ]
 "34
 [; ;lights.c: 34:     if (number & 0b00100) {LATAbits.LATA2 = 1;} else {LATAbits.LATA2 = 0;}
-[e $ ! != & -> _number `i -> 4 `i -> 0 `i 2021  ]
+[e $ ! != & _number -> 4 `i -> 0 `i 2021  ]
 {
 [e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 }
@@ -2207,7 +2207,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2022 ]
 "35
 [; ;lights.c: 35:     if (number & 0b01000) {LATFbits.LATF6 = 1;} else {LATFbits.LATF6 = 0;}
-[e $ ! != & -> _number `i -> 8 `i -> 0 `i 2023  ]
+[e $ ! != & _number -> 8 `i -> 0 `i 2023  ]
 {
 [e = . . _LATFbits 0 6 -> -> 1 `i `uc ]
 }
@@ -2219,7 +2219,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2024 ]
 "36
 [; ;lights.c: 36:     if (number & 0b10000) {LATAbits.LATA4 = 1;} else {LATAbits.LATA4 = 0;}
-[e $ ! != & -> _number `i -> 16 `i -> 0 `i 2025  ]
+[e $ ! != & _number -> 16 `i -> 0 `i 2025  ]
 {
 [e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
 }
@@ -2234,22 +2234,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2016 ]
 }
 "42
-[; ;lights.c: 42: void SmallHours(char hour, char minute)
-[v _SmallHours `(v ~T0 @X0 1 ef2`uc`uc ]
+[; ;lights.c: 42: void SmallHours(int hour, int minute)
+[v _SmallHours `(v ~T0 @X0 1 ef2`i`i ]
 "43
 [; ;lights.c: 43: {
 {
 [e :U _SmallHours ]
 "42
-[; ;lights.c: 42: void SmallHours(char hour, char minute)
-[v _hour `uc ~T0 @X0 1 r1 ]
-[v _minute `uc ~T0 @X0 1 r2 ]
+[; ;lights.c: 42: void SmallHours(int hour, int minute)
+[v _hour `i ~T0 @X0 1 r1 ]
+[v _minute `i ~T0 @X0 1 r2 ]
 "43
 [; ;lights.c: 43: {
 [f ]
 "44
 [; ;lights.c: 44:     if (hour >= 1 && hour < 5) {
-[e $ ! && >= -> _hour `i -> 1 `i < -> _hour `i -> 5 `i 2028  ]
+[e $ ! && >= _hour -> 1 `i < _hour -> 5 `i 2028  ]
 {
 "45
 [; ;lights.c: 45:         CM1CON0bits.EN = 0;
@@ -2263,7 +2263,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2028 ]
 "49
 [; ;lights.c: 49:     if (hour == 5 && minute == 0) {CM1CON0bits.EN = 1;}
-[e $ ! && == -> _hour `i -> 5 `i == -> _minute `i -> 0 `i 2029  ]
+[e $ ! && == _hour -> 5 `i == _minute -> 0 `i 2029  ]
 {
 [e = . . _CM1CON0bits 0 6 -> -> 1 `i `uc ]
 }

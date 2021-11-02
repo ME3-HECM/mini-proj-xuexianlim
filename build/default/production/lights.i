@@ -24228,8 +24228,8 @@ unsigned char __t3rd16on(void);
 # 1 "./lights.h" 1
 # 16 "./lights.h"
 void Lights_init(void);
-void LEDarray_disp_bin(char number);
-void SmallHours(char hour, char minute);
+void LEDarray_disp_bin(int number);
+void SmallHours(int hour, int minute);
 # 3 "lights.c" 2
 
 
@@ -24257,7 +24257,7 @@ void Lights_init(void)
 
 
 
-void LEDarray_disp_bin(char number)
+void LEDarray_disp_bin(int number)
 {
 
     if (number & 0b00001) {LATGbits.LATG0 = 1;} else {LATGbits.LATG0 = 0;}
@@ -24270,7 +24270,7 @@ void LEDarray_disp_bin(char number)
 
 
 
-void SmallHours(char hour, char minute)
+void SmallHours(int hour, int minute)
 {
     if (hour >= 1 && hour < 5) {
         CM1CON0bits.EN = 0;

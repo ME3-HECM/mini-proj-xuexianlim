@@ -3,24 +3,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16 ./lights.h
 [; ;./lights.h: 16: void Lights_init(void);
 [v _Lights_init `(v ~T0 @X0 0 ef ]
-"11 ./timers.h
-[; ;./timers.h: 11: void Timer0_init(void);
+"9 ./timers.h
+[; ;./timers.h: 9: void Timer0_init(void);
 [v _Timer0_init `(v ~T0 @X0 0 ef ]
 "10 ./comparator.h
 [; ;./comparator.h: 10: void Comp1_init(void);
 [v _Comp1_init `(v ~T0 @X0 0 ef ]
-"12 ./interrupts.h
-[; ;./interrupts.h: 12: void Interrupts_init(void);
+"11 ./interrupts.h
+[; ;./interrupts.h: 11: void Interrupts_init(void);
 [v _Interrupts_init `(v ~T0 @X0 0 ef ]
-"12 ./timers.h
-[; ;./timers.h: 12: void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, char *phour, char *pminute, char *pdayofweek, char *DST);
-[v _Timekeeper `(v ~T0 @X0 0 ef7`*ui`*uc`*uc`*uc`*uc`*uc`*uc ]
+"10 ./timers.h
+[; ;./timers.h: 10: void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, int *phour, int *pminute, char *pdayofweek, char *pDST);
+[v _Timekeeper `(v ~T0 @X0 0 ef7`*ui`*uc`*uc`*i`*i`*uc`*uc ]
 "17 ./lights.h
-[; ;./lights.h: 17: void LEDarray_disp_bin(char number);
-[v _LEDarray_disp_bin `(v ~T0 @X0 0 ef1`uc ]
+[; ;./lights.h: 17: void LEDarray_disp_bin(int number);
+[v _LEDarray_disp_bin `(v ~T0 @X0 0 ef1`i ]
 "18
-[; ;./lights.h: 18: void SmallHours(char hour, char minute);
-[v _SmallHours `(v ~T0 @X0 0 ef2`uc`uc ]
+[; ;./lights.h: 18: void SmallHours(int hour, int minute);
+[v _SmallHours `(v ~T0 @X0 0 ef2`i`i ]
+"15 ./timers.h
+[; ;./timers.h: 15: void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute);
+[v _UpdateDawnDusk `(v ~T0 @X0 0 ef6`*i`*i`*i`*i`*i`*i ]
+"12
+[; ;./timers.h: 12: void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
+[v _SunPleaseFixTheDamnClock `(v ~T0 @X0 0 ef7`*i`*i`*i`*i`*i`*i`uc ]
 "2 main.c
 [p x FEXTOSC  =  HS  ]
 "3
@@ -2001,73 +2007,137 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40928
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40928: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"9 ./flags.h
+[; ;./flags.h: 9: char minutehand = 0;
+[v _minutehand `uc ~T0 @X0 1 e ]
+[i _minutehand
+-> -> 0 `i `uc
+]
+"10
+[; ;./flags.h: 10: char dawndusk = 0;
+[v _dawndusk `uc ~T0 @X0 1 e ]
+[i _dawndusk
+-> -> 0 `i `uc
+]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"16 main.c
-[; ;main.c: 16: void main(void) {
+"17 main.c
+[; ;main.c: 17: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"18
-[; ;main.c: 18:     unsigned int year = 2021;
+"19
+[; ;main.c: 19:     unsigned int year = 2021;
 [v _year `ui ~T0 @X0 1 a ]
 [e = _year -> -> 2021 `i `ui ]
-"19
-[; ;main.c: 19:     char month = 11;
+"20
+[; ;main.c: 20:     char month = 11;
 [v _month `uc ~T0 @X0 1 a ]
 [e = _month -> -> 11 `i `uc ]
-"20
-[; ;main.c: 20:     char day = 1;
-[v _day `uc ~T0 @X0 1 a ]
-[e = _day -> -> 1 `i `uc ]
 "21
-[; ;main.c: 21:     char hour = 20;
-[v _hour `uc ~T0 @X0 1 a ]
-[e = _hour -> -> 20 `i `uc ]
+[; ;main.c: 21:     char day = 2;
+[v _day `uc ~T0 @X0 1 a ]
+[e = _day -> -> 2 `i `uc ]
 "22
-[; ;main.c: 22:     char minute = 00;
-[v _minute `uc ~T0 @X0 1 a ]
-[e = _minute -> -> 0 `i `uc ]
+[; ;main.c: 22:     int hour = 12;
+[v _hour `i ~T0 @X0 1 a ]
+[e = _hour -> 12 `i ]
 "23
-[; ;main.c: 23:     char dayofweek = 1;
-[v _dayofweek `uc ~T0 @X0 1 a ]
-[e = _dayofweek -> -> 1 `i `uc ]
+[; ;main.c: 23:     int minute = 0;
+[v _minute `i ~T0 @X0 1 a ]
+[e = _minute -> 0 `i ]
 "24
-[; ;main.c: 24:     char DST = 0;
+[; ;main.c: 24:     char dayofweek = 2;
+[v _dayofweek `uc ~T0 @X0 1 a ]
+[e = _dayofweek -> -> 2 `i `uc ]
+"25
+[; ;main.c: 25:     char DST = 0;
 [v _DST `uc ~T0 @X0 1 a ]
 [e = _DST -> -> 0 `i `uc ]
+"26
+[; ;main.c: 26:     int dawnhour = 7;
+[v _dawnhour `i ~T0 @X0 1 a ]
+[e = _dawnhour -> 7 `i ]
 "27
-[; ;main.c: 27:     Lights_init();
-[e ( _Lights_init ..  ]
+[; ;main.c: 27:     int dawnminute = 0;
+[v _dawnminute `i ~T0 @X0 1 a ]
+[e = _dawnminute -> 0 `i ]
 "28
-[; ;main.c: 28:     Timer0_init();
-[e ( _Timer0_init ..  ]
+[; ;main.c: 28:     int duskhour = 17;
+[v _duskhour `i ~T0 @X0 1 a ]
+[e = _duskhour -> 17 `i ]
 "29
-[; ;main.c: 29:     Comp1_init();
-[e ( _Comp1_init ..  ]
-"30
-[; ;main.c: 30:     Interrupts_init();
-[e ( _Interrupts_init ..  ]
+[; ;main.c: 29:     int duskminute = 0;
+[v _duskminute `i ~T0 @X0 1 a ]
+[e = _duskminute -> 0 `i ]
 "32
-[; ;main.c: 32:     while (1) {
+[; ;main.c: 32:     Lights_init();
+[e ( _Lights_init ..  ]
+"33
+[; ;main.c: 33:     Timer0_init();
+[e ( _Timer0_init ..  ]
+"34
+[; ;main.c: 34:     Comp1_init();
+[e ( _Comp1_init ..  ]
+"35
+[; ;main.c: 35:     Interrupts_init();
+[e ( _Interrupts_init ..  ]
+"37
+[; ;main.c: 37:     while (1) {
 [e :U 2017 ]
 {
-"33
-[; ;main.c: 33:         Timekeeper(&year, &month, &day, &hour, &minute, &dayofweek, &DST);
+"38
+[; ;main.c: 38:         if (minutehand) {
+[e $ ! != -> _minutehand `i -> 0 `i 2019  ]
+{
+"39
+[; ;main.c: 39:             Timekeeper(&year, &month, &day, &hour, &minute, &dayofweek, &DST);
 [e ( _Timekeeper (4 , , , , , , &U _year &U _month &U _day &U _hour &U _minute &U _dayofweek &U _DST ]
-"34
-[; ;main.c: 34:         LEDarray_disp_bin(hour);
+"40
+[; ;main.c: 40:             minutehand = 0;
+[e = _minutehand -> -> 0 `i `uc ]
+"41
+[; ;main.c: 41:         }
+}
+[e :U 2019 ]
+"43
+[; ;main.c: 43:         LEDarray_disp_bin(hour);
 [e ( _LEDarray_disp_bin (1 _hour ]
-"35
-[; ;main.c: 35:         SmallHours(hour, minute);
+"45
+[; ;main.c: 45:         SmallHours(hour, minute);
 [e ( _SmallHours (2 , _hour _minute ]
-"36
-[; ;main.c: 36:     }
+"47
+[; ;main.c: 47:         if (dawndusk) {
+[e $ ! != -> _dawndusk `i -> 0 `i 2020  ]
+{
+"48
+[; ;main.c: 48:             UpdateDawnDusk(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute);
+[e ( _UpdateDawnDusk (4 , , , , , &U _dawnhour &U _dawnminute &U _duskhour &U _duskminute &U _hour &U _minute ]
+"49
+[; ;main.c: 49:             dawndusk = 0;
+[e = _dawndusk -> -> 0 `i `uc ]
+"50
+[; ;main.c: 50:         }
+}
+[e :U 2020 ]
+"52
+[; ;main.c: 52:         if (hour == 12 && minute == 0) {
+[e $ ! && == _hour -> 12 `i == _minute -> 0 `i 2021  ]
+{
+"53
+[; ;main.c: 53:             SunPleaseFixTheDamnClock(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute, DST);
+[e ( _SunPleaseFixTheDamnClock (4 , , , , , , &U _dawnhour &U _dawnminute &U _duskhour &U _duskminute &U _hour &U _minute _DST ]
+"54
+[; ;main.c: 54:         }
+}
+[e :U 2021 ]
+"55
+[; ;main.c: 55:     }
 }
 [e :U 2016 ]
 [e $U 2017  ]
 [e :U 2018 ]
-"37
-[; ;main.c: 37: }
+"56
+[; ;main.c: 56: }
 [e :UE 2015 ]
 }

@@ -3,4 +3,5 @@ main.c  \
 lights.h  \
 timers.h  \
 interrupts.h  \
-comparator.h 
+comparator.h  \
+flags.h 
