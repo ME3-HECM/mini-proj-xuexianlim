@@ -24266,4 +24266,5 @@ void Comp1_init(void)
     CM1CON1bits.INTN = 1;
     DAC_init();
     CM1CON0bits.EN = 1;
+    _delay((unsigned long)((1)*(64000000/4000000.0)));
 }

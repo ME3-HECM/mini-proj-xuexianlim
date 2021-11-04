@@ -27,7 +27,7 @@ void __interrupt() ISR()
     }
 
     if (PIR2bits.C1IF == 1) { //Comparator 1
-        if (CM1CON0bits.OUT) {LIGHTS = 1; dawndusk = 1;} //rising edge (dark outside)
+        if (CM1CON0bits.OUT) {LIGHTS = 1; dawndusk = 2;} //rising edge (dark outside)
         else {LIGHTS = 0; dawndusk = 1;} //falling edge (bright outside)
         PIR2bits.C1IF = 0;
     }

@@ -29,4 +29,5 @@ void Comp1_init(void)
     CM1CON1bits.INTN = 1; //set interrupt flag on negative going edge
     DAC_init(); //initialise the DAC
     CM1CON0bits.EN = 1; //enable Comparator 1
+    __delay_us(1);
 }

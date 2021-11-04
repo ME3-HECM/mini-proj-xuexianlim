@@ -1,6 +1,7 @@
 #include <xc.h>
 #include "timers.h"
 #include "lights.h"
+#include "flags.h"
 
 /************************************
  * Set up Timer0
@@ -9,7 +10,7 @@ void Timer0_init(void)
 {
     T0CON1bits.T0CS=0b010; //Fosc/4
     T0CON1bits.T0ASYNC=1; //input to Timer0 counter not synced to sys clocks (needed to ensure correct operation with Fosc/4 as clock source)
-    T0CON1bits.T0CKPS=0b1110; //1:16384 prescaler (0b1110 - modify this to speed up time for testing)
+    T0CON1bits.T0CKPS=0b0010; //1:16384 prescaler (0b1110 - modify this to speed up time for testing)
     T0CON0bits.T016BIT=1; //16-bit mode
     //4*16384/(64*10^6) = 1.024*10^-3 s
     //60/(1.024*10^-3) = 58593
@@ -95,20 +96,26 @@ void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, 
             
     if (timedifference > 30 || timedifference < -30) { //±30-min tolerance before the time gets synced to the sun
         *pminute = timedifference % 60; //adjust the minutes
-        *pdawnminute = *pdawnminute + timedifference % 60;
-        *pduskminute = *pduskminute + timedifference % 60;
+        *pdawnminute += timedifference % 60;
+        *pduskminute += timedifference % 60;
         
-        if (*pminute < 0) {--*phour; *pminute = *pminute + 60;} //ensure minutes make sense (values from 0-59)
+        if (*pminute < 0) {--*phour; *pminute += 60;} //ensure minutes make sense (values from 0-59)
         
-        if (*pdawnminute >= 60) {++*pdawnhour; *pdawnminute = *pdawnminute - 60;}
-        else if (*pdawnminute < 0) {--*pdawnhour; *pdawnminute = *pdawnminute + 60;}
+        if (*pdawnminute >= 60) {++*pdawnhour; *pdawnminute -= 60;}
+        else if (*pdawnminute < 0) {--*pdawnhour; *pdawnminute += 60;}
         
-        if (*pduskminute >= 60) {++*pduskhour; *pduskminute = *pduskminute - 60;}
-        else if (*pduskminute < 0) {--*pduskhour; *pduskminute = *pduskminute + 60;}
+        if (*pduskminute >= 60) {++*pduskhour; *pduskminute -= 60;}
+        else if (*pduskminute < 0) {--*pduskhour; *pduskminute += 60;}
         
         *phour = 12 + timedifference / 60; //adjust the hour
-        *pdawnhour = *pdawnhour + timedifference / 60;
-        *pduskhour = *pduskhour + timedifference / 60;
+        *pdawnhour += timedifference / 60;
+        *pduskhour += timedifference / 60;
+        
+    //clock is likely 12 hours out of sync if midpoint of dusk and dawn is close to noon yet dawn is after noon and dusk is before noon    
+    } else if (*pdawnhour > 12 && *pduskhour < 12) {
+        *phour = 0; //shift all the times by 12 hours
+        *pdawnhour -= 12;
+        *pduskhour += 12;
     }
 }
 
@@ -120,13 +127,13 @@ int TimeDiff(int hour1, int minute1, int hour2, int minute2) //returns positive 
     if (hour2 > hour1) {
         while (hour2 > hour1) { //convert hours to minutes
             --hour2;
-            minute2 = minute2 + 60;
+            minute2 += 60;
         }
         
     } else if (hour1 > hour2) {
         while (hour1 > hour2) {
             --hour1;
-            minute1 = minute1 + 60;
+            minute1 += 60;
         }    
     }
     return minute2 - minute1; //difference in minutes
@@ -142,8 +149,8 @@ void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int 
     *pavghour = hour1 + HalfTimeDiff / 60; //add/subtract half of the time interval to the earlier/later time
     *pavgminute = minute1 + HalfTimeDiff % 60;
     
-    if (*pavgminute >= 60) {++*pavghour; *pavgminute = *pavgminute - 60;} //ensure minutes make sense (values from 0-59)
-    else if (*pavgminute < 0) {--*pavghour; *pavgminute = *pavgminute + 60;}
+    if (*pavgminute >= 60) {++*pavghour; *pavgminute -= 60;} //ensure minutes make sense (values from 0-59)
+    else if (*pavgminute < 0) {--*pavghour; *pavgminute += 60;}
 }
 
 /************************************
@@ -152,21 +159,13 @@ void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int 
 ************************************/
 void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
 {
-    if (*phour < 12 && !LIGHTS) { //dawn is before noon and lights should be off
-        if (DST) {
-            *pdawnhour = *phour - 1; //remove effect of DST
-            *pdawnminute = *pminute;
-        } else {
-            *pdawnhour = *phour;
-            *pdawnminute = *pminute;
-        }
-    } else if (LIGHTS) { //dusk is after noon and lights should be on
-        if (DST) {
-            *pduskhour = *phour - 1; //remove effect of DST
-            *pduskminute = *pminute;
-        } else {
-            *pduskhour = *phour;
-            *pduskminute = *pminute;
-        }
+    if (dawndusk == 1) { //dawn is before noon and lights should be off
+        *pdawnhour = *phour - DST; //remove effect of DST
+        *pdawnminute = *pminute;
+    }
+    
+    if (dawndusk == 2) {
+        *pduskhour = *phour - DST; //remove effect of DST
+        *pduskminute = *pminute;
     }
 }

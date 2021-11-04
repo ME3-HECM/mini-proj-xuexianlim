@@ -24229,8 +24229,20 @@ unsigned char __t3rd16on(void);
 # 16 "./lights.h"
 void Lights_init(void);
 void LEDarray_disp_bin(int number);
-void SmallHours(int hour, int minute);
+void SmallHours(int hour, int minute, int dawnhour);
 # 3 "lights.c" 2
+# 1 "./comparator.h" 1
+
+
+
+
+
+
+
+
+void DAC_init(void);
+void Comp1_init(void);
+# 4 "lights.c" 2
 
 
 
@@ -24270,12 +24282,13 @@ void LEDarray_disp_bin(int number)
 
 
 
-void SmallHours(int hour, int minute)
+void SmallHours(int hour, int minute, int dawnhour)
 {
     if (hour >= 1 && hour < 5) {
-        CM1CON0bits.EN = 0;
         LATHbits.LATH3 = 0;
     }
 
-    if (hour == 5 && minute == 0) {CM1CON0bits.EN = 1;}
+    if (hour == 5 && minute == 0) {
+        LATHbits.LATH3 = CM1CON0bits.OUT;
+    }
 }

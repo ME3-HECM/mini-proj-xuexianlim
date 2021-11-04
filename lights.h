@@ -15,6 +15,6 @@
 //function prototypes
 void Lights_init(void);
 void LEDarray_disp_bin(int number);
-void SmallHours(int hour, int minute);
+void SmallHours(int hour, int minute, int dawnhour);
 
 #endif

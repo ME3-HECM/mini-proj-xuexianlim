@@ -11,6 +11,7 @@
 #include "interrupts.h"
 #include "comparator.h"
 #include "flags.h"
+#include "LCD.h"
 
 #define _XTAL_FREQ 64000000
 
@@ -18,14 +19,14 @@ void main(void) {
     //user inputs date, time and DST status for initialisation
     unsigned int year = 2021;
     char month = 11;
-    char day = 2;
+    char day = 4;
     int hour = 12; //24-hour time format
     int minute = 0;
-    char dayofweek = 2; //1 = Mon, 2 = Tue, 3 = Wed, 4 = Thu, 5 = Fri, 6 = Sat, 7 = Sun
+    char dayofweek = 4; //1 = Mon, 2 = Tue, 3 = Wed, 4 = Thu, 5 = Fri, 6 = Sat, 7 = Sun
     char DST = 0; //input whether the UK is currently in DST (1 = BST/DST, 0 = GMT)
-    int dawnhour = 7; //input approximate dawn and dusk times in GMT
+    int dawnhour = 9; //input approximate dawn and dusk times in GMT
     int dawnminute = 0; //not too important to get it exactly accurate as it will be synced to the sun anyway
-    int duskhour = 17;
+    int duskhour = 15;
     int duskminute = 0;
     
 	//initialisation functions to set up the hardware modules
@@ -33,6 +34,8 @@ void main(void) {
     Timer0_init();
     Comp1_init();
     Interrupts_init();
+    dawndusk = 0; //prevent spurious setting of dusk timing after Comparator 1 powers up and Vn momentarily exceeds Vp
+    LCD_Init();
     
     while (1) {
         if (minutehand) {
@@ -42,7 +45,7 @@ void main(void) {
         
         LEDarray_disp_bin(hour); //display hour of the day on LED array in binary
         
-        SmallHours(hour, minute); //turn the lights off between 1 am and 5 am
+        SmallHours(hour, minute, dawnhour); //turn the lights off between 1 am and 5 am
         
         if (dawndusk) {
             UpdateDawnDusk(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute, DST); //update the dawn and dusk times
@@ -51,6 +54,8 @@ void main(void) {
         
         if (hour == 12 && minute == 0) { //sync the clock to the sun at noon
             SunPleaseFixTheDamnClock(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute, DST);
-        }      
+        }
+
+        Display(year, month, day, hour, minute, dayofweek, DST, dawnhour, dawnminute, duskhour, duskminute); //display values on LCD for testing
     }
 }

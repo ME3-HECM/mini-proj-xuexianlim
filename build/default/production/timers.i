@@ -24246,8 +24246,20 @@ void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pdusk
 # 16 "./lights.h"
 void Lights_init(void);
 void LEDarray_disp_bin(int number);
-void SmallHours(int hour, int minute);
+void SmallHours(int hour, int minute, int dawnhour);
 # 4 "timers.c" 2
+# 1 "./flags.h" 1
+
+
+
+
+
+
+
+
+char minutehand = 0;
+char dawndusk = 0;
+# 5 "timers.c" 2
 
 
 
@@ -24342,20 +24354,26 @@ void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, 
 
     if (timedifference > 30 || timedifference < -30) {
         *pminute = timedifference % 60;
-        *pdawnminute = *pdawnminute + timedifference % 60;
-        *pduskminute = *pduskminute + timedifference % 60;
+        *pdawnminute += timedifference % 60;
+        *pduskminute += timedifference % 60;
 
-        if (*pminute < 0) {--*phour; *pminute = *pminute + 60;}
+        if (*pminute < 0) {--*phour; *pminute += 60;}
 
-        if (*pdawnminute >= 60) {++*pdawnhour; *pdawnminute = *pdawnminute - 60;}
-        else if (*pdawnminute < 0) {--*pdawnhour; *pdawnminute = *pdawnminute + 60;}
+        if (*pdawnminute >= 60) {++*pdawnhour; *pdawnminute -= 60;}
+        else if (*pdawnminute < 0) {--*pdawnhour; *pdawnminute += 60;}
 
-        if (*pduskminute >= 60) {++*pduskhour; *pduskminute = *pduskminute - 60;}
-        else if (*pduskminute < 0) {--*pduskhour; *pduskminute = *pduskminute + 60;}
+        if (*pduskminute >= 60) {++*pduskhour; *pduskminute -= 60;}
+        else if (*pduskminute < 0) {--*pduskhour; *pduskminute += 60;}
 
         *phour = 12 + timedifference / 60;
-        *pdawnhour = *pdawnhour + timedifference / 60;
-        *pduskhour = *pduskhour + timedifference / 60;
+        *pdawnhour += timedifference / 60;
+        *pduskhour += timedifference / 60;
+
+
+    } else if (*pdawnhour > 12 && *pduskhour < 12) {
+        *phour = 0;
+        *pdawnhour -= 12;
+        *pduskhour += 12;
     }
 }
 
@@ -24367,13 +24385,13 @@ int TimeDiff(int hour1, int minute1, int hour2, int minute2)
     if (hour2 > hour1) {
         while (hour2 > hour1) {
             --hour2;
-            minute2 = minute2 + 60;
+            minute2 += 60;
         }
 
     } else if (hour1 > hour2) {
         while (hour1 > hour2) {
             --hour1;
-            minute1 = minute1 + 60;
+            minute1 += 60;
         }
     }
     return minute2 - minute1;
@@ -24389,8 +24407,8 @@ void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int 
     *pavghour = hour1 + HalfTimeDiff / 60;
     *pavgminute = minute1 + HalfTimeDiff % 60;
 
-    if (*pavgminute >= 60) {++*pavghour; *pavgminute = *pavgminute - 60;}
-    else if (*pavgminute < 0) {--*pavghour; *pavgminute = *pavgminute + 60;}
+    if (*pavgminute >= 60) {++*pavghour; *pavgminute -= 60;}
+    else if (*pavgminute < 0) {--*pavghour; *pavgminute += 60;}
 }
 
 
@@ -24399,21 +24417,13 @@ void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int 
 
 void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
 {
-    if (*phour < 12 && !LATHbits.LATH3) {
-        if (DST) {
-            *pdawnhour = *phour - 1;
-            *pdawnminute = *pminute;
-        } else {
-            *pdawnhour = *phour;
-            *pdawnminute = *pminute;
-        }
-    } else if (LATHbits.LATH3) {
-        if (DST) {
-            *pduskhour = *phour - 1;
-            *pduskminute = *pminute;
-        } else {
-            *pduskhour = *phour;
-            *pduskminute = *pminute;
-        }
+    if (dawndusk == 1) {
+        *pdawnhour = *phour - DST;
+        *pdawnminute = *pminute;
+    }
+
+    if (dawndusk == 2) {
+        *pduskhour = *phour - DST;
+        *pduskminute = *pminute;
     }
 }

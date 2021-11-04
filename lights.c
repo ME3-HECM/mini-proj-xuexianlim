@@ -1,5 +1,6 @@
 #include <xc.h>
 #include "lights.h"
+#include "comparator.h"
 
 /************************************
  * Initialise pins to drive the LED array and street lights
@@ -39,12 +40,13 @@ void LEDarray_disp_bin(int number)
 /************************************
  * Turns the lights off during the small hours of the morning
 ************************************/
-void SmallHours(int hour, int minute)
+void SmallHours(int hour, int minute, int dawnhour)
 {
     if (hour >= 1 && hour < 5) { //between 1 am and 5 am
-        CM1CON0bits.EN = 0; //disable Comparator 1
         LIGHTS = 0; //turn the lights off
     }
         
-    if (hour == 5 && minute == 0) {CM1CON0bits.EN = 1;} //re-enable Comparator 1 at 5 am
+    if (hour == 5 && minute == 0) { //at 5 am
+        LIGHTS = CM1CON0bits.OUT;
+    }
 }
