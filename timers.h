@@ -12,6 +12,6 @@ char LeapYear(unsigned int year);
 void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
 int TimeDiff(int hour1, int minute1, int hour2, int minute2);
 void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute);
-void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute);
+void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
 
 #endif

@@ -24254,7 +24254,7 @@ char LeapYear(unsigned int year);
 void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
 int TimeDiff(int hour1, int minute1, int hour2, int minute2);
 void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute);
-void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute);
+void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
 # 11 "main.c" 2
 # 1 "./interrupts.h" 1
 # 11 "./interrupts.h"
@@ -24319,7 +24319,7 @@ void main(void) {
         SmallHours(hour, minute);
 
         if (dawndusk) {
-            UpdateDawnDusk(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute);
+            UpdateDawnDusk(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute, DST);
             dawndusk = 0;
         }
 

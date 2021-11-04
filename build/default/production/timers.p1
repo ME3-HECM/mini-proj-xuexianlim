@@ -52,6 +52,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13
 [; ;./timers.h: 13: int TimeDiff(int hour1, int minute1, int hour2, int minute2);
 [v _TimeDiff `(i ~T0 @X0 0 ef4`i`i`i`i ]
+"29236 C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29236:     struct {
+[s S1361 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1361 . LATH0 LATH1 LATH2 LATH3 ]
+"29242
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29242:     struct {
+[s S1362 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1362 . LH0 LH1 LH2 LH3 ]
+"29248
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29248:     struct {
+[s S1363 :4 `uc 1 :1 `uc 1 ]
+[n S1363 . . LH4 ]
+"29252
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29252:     struct {
+[s S1364 :5 `uc 1 :1 `uc 1 ]
+[n S1364 . . LH5 ]
+"29256
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29256:     struct {
+[s S1365 :6 `uc 1 :1 `uc 1 ]
+[n S1365 . . LH6 ]
+"29260
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29260:     struct {
+[s S1366 :7 `uc 1 :1 `uc 1 ]
+[n S1366 . . LH7 ]
+"29235
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29235: typedef union {
+[u S1360 `S1361 1 `S1362 1 `S1363 1 `S1364 1 `S1365 1 `S1366 1 ]
+[n S1360 . . . . . . . ]
+"29265
+[; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29265: extern volatile LATHbits_t LATHbits __attribute__((address(0xF80)));
+[v _LATHbits `VS1360 ~T0 @X0 0 e@3968 ]
 "55 C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 55: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -2026,41 +2057,41 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40928
 [; ;C:/Users/Lim Xue Xian/.mchp_packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40928: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"7 timers.c
-[; ;timers.c: 7: void Timer0_init(void)
+"8 timers.c
+[; ;timers.c: 8: void Timer0_init(void)
 [v _Timer0_init `(v ~T0 @X0 1 ef ]
-"8
-[; ;timers.c: 8: {
+"9
+[; ;timers.c: 9: {
 {
 [e :U _Timer0_init ]
 [f ]
-"9
-[; ;timers.c: 9:     T0CON1bits.T0CS=0b010;
-[e = . . _T0CON1bits 0 2 -> -> 2 `i `uc ]
 "10
-[; ;timers.c: 10:     T0CON1bits.T0ASYNC=1;
-[e = . . _T0CON1bits 0 1 -> -> 1 `i `uc ]
+[; ;timers.c: 10:     T0CON1bits.T0CS=0b010;
+[e = . . _T0CON1bits 0 2 -> -> 2 `i `uc ]
 "11
-[; ;timers.c: 11:     T0CON1bits.T0CKPS=0b1110;
-[e = . . _T0CON1bits 0 0 -> -> 14 `i `uc ]
+[; ;timers.c: 11:     T0CON1bits.T0ASYNC=1;
+[e = . . _T0CON1bits 0 1 -> -> 1 `i `uc ]
 "12
-[; ;timers.c: 12:     T0CON0bits.T016BIT=1;
+[; ;timers.c: 12:     T0CON1bits.T0CKPS=0b0010;
+[e = . . _T0CON1bits 0 0 -> -> 2 `i `uc ]
+"13
+[; ;timers.c: 13:     T0CON0bits.T016BIT=1;
 [e = . . _T0CON0bits 0 1 -> -> 1 `i `uc ]
-"16
-[; ;timers.c: 16:     TMR0H=0b00011011;
-[e = _TMR0H -> -> 27 `i `uc ]
 "17
-[; ;timers.c: 17:     TMR0L=0b00011110;
-[e = _TMR0L -> -> 30 `i `uc ]
+[; ;timers.c: 17:     TMR0H=0b00011011;
+[e = _TMR0H -> -> 27 `i `uc ]
 "18
-[; ;timers.c: 18:     T0CON0bits.T0EN=1;
-[e = . . _T0CON0bits 0 4 -> -> 1 `i `uc ]
+[; ;timers.c: 18:     TMR0L=0b00011110;
+[e = _TMR0L -> -> 30 `i `uc ]
 "19
-[; ;timers.c: 19: }
+[; ;timers.c: 19:     T0CON0bits.T0EN=1;
+[e = . . _T0CON0bits 0 4 -> -> 1 `i `uc ]
+"20
+[; ;timers.c: 20: }
 [e :UE 2015 ]
 }
-"24
-[; ;timers.c: 24: void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, int *phour, int *pminute, char *pdayofweek, char *pDST) {
+"25
+[; ;timers.c: 25: void Timekeeper(unsigned int *pyear, char *pmonth, char *pday, int *phour, int *pminute, char *pdayofweek, char *pDST) {
 [v _Timekeeper `(v ~T0 @X0 1 ef7`*ui`*uc`*uc`*i`*i`*uc`*uc ]
 {
 [e :U _Timekeeper ]
@@ -2072,19 +2103,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _pdayofweek `*uc ~T0 @X0 1 r6 ]
 [v _pDST `*uc ~T0 @X0 1 r7 ]
 [f ]
-"26
-[; ;timers.c: 26:     ++*pminute;
+"27
+[; ;timers.c: 27:     ++*pminute;
 [e =+ *U _pminute -> 1 `i ]
-"28
-[; ;timers.c: 28:     if (*pminute == 60) {*pminute = 0; ++*phour;}
+"29
+[; ;timers.c: 29:     if (*pminute == 60) {*pminute = 0; ++*phour;}
 [e $ ! == *U _pminute -> 60 `i 2017  ]
 {
 [e = *U _pminute -> 0 `i ]
 [e =+ *U _phour -> 1 `i ]
 }
 [e :U 2017 ]
-"30
-[; ;timers.c: 30:     if (*phour == 24) {*phour = 0; ++*pday; ++*pdayofweek;}
+"31
+[; ;timers.c: 31:     if (*phour == 24) {*phour = 0; ++*pday; ++*pdayofweek;}
 [e $ ! == *U _phour -> 24 `i 2018  ]
 {
 [e = *U _phour -> 0 `i ]
@@ -2092,173 +2123,173 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e =+ *U _pdayofweek -> -> 1 `i `uc ]
 }
 [e :U 2018 ]
-"32
-[; ;timers.c: 32:     if (*pdayofweek == 8) {*pdayofweek = 1;}
+"33
+[; ;timers.c: 33:     if (*pdayofweek == 8) {*pdayofweek = 1;}
 [e $ ! == -> *U _pdayofweek `i -> 8 `i 2019  ]
 {
 [e = *U _pdayofweek -> -> 1 `i `uc ]
 }
 [e :U 2019 ]
-"34
-[; ;timers.c: 34:     if (*pday == 29 && *pmonth == 2 && !LeapYear(*pyear)) {
+"35
+[; ;timers.c: 35:     if (*pday == 29 && *pmonth == 2 && !LeapYear(*pyear)) {
 [e $ ! && && == -> *U _pday `i -> 29 `i == -> *U _pmonth `i -> 2 `i ! != -> ( _LeapYear (1 *U _pyear `i -> 0 `i 2020  ]
 {
-"35
-[; ;timers.c: 35:         *pday = 1;
-[e = *U _pday -> -> 1 `i `uc ]
 "36
-[; ;timers.c: 36:         ++*pmonth;
-[e =+ *U _pmonth -> -> 1 `i `uc ]
+[; ;timers.c: 36:         *pday = 1;
+[e = *U _pday -> -> 1 `i `uc ]
 "37
-[; ;timers.c: 37:     }
+[; ;timers.c: 37:         ++*pmonth;
+[e =+ *U _pmonth -> -> 1 `i `uc ]
+"38
+[; ;timers.c: 38:     }
 }
 [e :U 2020 ]
-"39
-[; ;timers.c: 39:     if (*pday == 30 && *pmonth == 2 && LeapYear(*pyear)) {
+"40
+[; ;timers.c: 40:     if (*pday == 30 && *pmonth == 2 && LeapYear(*pyear)) {
 [e $ ! && && == -> *U _pday `i -> 30 `i == -> *U _pmonth `i -> 2 `i != -> ( _LeapYear (1 *U _pyear `i -> 0 `i 2021  ]
 {
-"40
-[; ;timers.c: 40:         *pday = 1;
-[e = *U _pday -> -> 1 `i `uc ]
 "41
-[; ;timers.c: 41:         ++*pmonth;
-[e =+ *U _pmonth -> -> 1 `i `uc ]
+[; ;timers.c: 41:         *pday = 1;
+[e = *U _pday -> -> 1 `i `uc ]
 "42
-[; ;timers.c: 42:     }
+[; ;timers.c: 42:         ++*pmonth;
+[e =+ *U _pmonth -> -> 1 `i `uc ]
+"43
+[; ;timers.c: 43:     }
 }
 [e :U 2021 ]
-"44
-[; ;timers.c: 44:     if (*pday == 31 && (*pmonth == 4 || *pmonth == 6 || *pmonth == 9 || *pmonth == 11)) {
+"45
+[; ;timers.c: 45:     if (*pday == 31 && (*pmonth == 4 || *pmonth == 6 || *pmonth == 9 || *pmonth == 11)) {
 [e $ ! && == -> *U _pday `i -> 31 `i || || || == -> *U _pmonth `i -> 4 `i == -> *U _pmonth `i -> 6 `i == -> *U _pmonth `i -> 9 `i == -> *U _pmonth `i -> 11 `i 2022  ]
 {
-"45
-[; ;timers.c: 45:         *pday = 1;
-[e = *U _pday -> -> 1 `i `uc ]
 "46
-[; ;timers.c: 46:         ++*pmonth;
-[e =+ *U _pmonth -> -> 1 `i `uc ]
+[; ;timers.c: 46:         *pday = 1;
+[e = *U _pday -> -> 1 `i `uc ]
 "47
-[; ;timers.c: 47:     }
+[; ;timers.c: 47:         ++*pmonth;
+[e =+ *U _pmonth -> -> 1 `i `uc ]
+"48
+[; ;timers.c: 48:     }
 }
 [e :U 2022 ]
-"49
-[; ;timers.c: 49:     if (*pday == 32 && (*pmonth == 1 || *pmonth == 3 || *pmonth == 5 || *pmonth == 7 || *pmonth == 8 || *pmonth == 10 || *pmonth == 12)) {
+"50
+[; ;timers.c: 50:     if (*pday == 32 && (*pmonth == 1 || *pmonth == 3 || *pmonth == 5 || *pmonth == 7 || *pmonth == 8 || *pmonth == 10 || *pmonth == 12)) {
 [e $ ! && == -> *U _pday `i -> 32 `i || || || || || || == -> *U _pmonth `i -> 1 `i == -> *U _pmonth `i -> 3 `i == -> *U _pmonth `i -> 5 `i == -> *U _pmonth `i -> 7 `i == -> *U _pmonth `i -> 8 `i == -> *U _pmonth `i -> 10 `i == -> *U _pmonth `i -> 12 `i 2023  ]
 {
-"50
-[; ;timers.c: 50:         *pday = 1;
-[e = *U _pday -> -> 1 `i `uc ]
 "51
-[; ;timers.c: 51:         ++*pmonth;
-[e =+ *U _pmonth -> -> 1 `i `uc ]
+[; ;timers.c: 51:         *pday = 1;
+[e = *U _pday -> -> 1 `i `uc ]
 "52
-[; ;timers.c: 52:     }
+[; ;timers.c: 52:         ++*pmonth;
+[e =+ *U _pmonth -> -> 1 `i `uc ]
+"53
+[; ;timers.c: 53:     }
 }
 [e :U 2023 ]
-"54
-[; ;timers.c: 54:     if (*pmonth == 13) {*pmonth = 1; ++*pyear;}
+"55
+[; ;timers.c: 55:     if (*pmonth == 13) {*pmonth = 1; ++*pyear;}
 [e $ ! == -> *U _pmonth `i -> 13 `i 2024  ]
 {
 [e = *U _pmonth -> -> 1 `i `uc ]
 [e =+ *U _pyear -> -> 1 `i `ui ]
 }
 [e :U 2024 ]
-"57
-[; ;timers.c: 57:     if (*pmonth == 3 && *pday >= 25 && *phour == 1 && *pdayofweek == 7) {
+"58
+[; ;timers.c: 58:     if (*pmonth == 3 && *pday >= 25 && *phour == 1 && *pdayofweek == 7) {
 [e $ ! && && && == -> *U _pmonth `i -> 3 `i >= -> *U _pday `i -> 25 `i == *U _phour -> 1 `i == -> *U _pdayofweek `i -> 7 `i 2025  ]
 {
-"58
-[; ;timers.c: 58:         ++*phour;
-[e =+ *U _phour -> 1 `i ]
 "59
-[; ;timers.c: 59:         *pDST = 1;
-[e = *U _pDST -> -> 1 `i `uc ]
+[; ;timers.c: 59:         ++*phour;
+[e =+ *U _phour -> 1 `i ]
 "60
-[; ;timers.c: 60:     }
+[; ;timers.c: 60:         *pDST = 1;
+[e = *U _pDST -> -> 1 `i `uc ]
+"61
+[; ;timers.c: 61:     }
 }
 [e :U 2025 ]
-"62
-[; ;timers.c: 62:     if (*pmonth == 10 && *pday >=25 && *phour == 2 && *pdayofweek == 7 && *pDST) {
+"63
+[; ;timers.c: 63:     if (*pmonth == 10 && *pday >=25 && *phour == 2 && *pdayofweek == 7 && *pDST) {
 [e $ ! && && && && == -> *U _pmonth `i -> 10 `i >= -> *U _pday `i -> 25 `i == *U _phour -> 2 `i == -> *U _pdayofweek `i -> 7 `i != -> *U _pDST `i -> 0 `i 2026  ]
 {
-"63
-[; ;timers.c: 63:         --*phour;
-[e =- *U _phour -> 1 `i ]
 "64
-[; ;timers.c: 64:         *pDST = 0;
-[e = *U _pDST -> -> 0 `i `uc ]
+[; ;timers.c: 64:         --*phour;
+[e =- *U _phour -> 1 `i ]
 "65
-[; ;timers.c: 65:     }
+[; ;timers.c: 65:         *pDST = 0;
+[e = *U _pDST -> -> 0 `i `uc ]
+"66
+[; ;timers.c: 66:     }
 }
 [e :U 2026 ]
-"66
-[; ;timers.c: 66: }
+"67
+[; ;timers.c: 67: }
 [e :UE 2016 ]
 }
-"71
-[; ;timers.c: 71: char LeapYear(unsigned int year)
-[v _LeapYear `(uc ~T0 @X0 1 ef1`ui ]
 "72
-[; ;timers.c: 72: {
+[; ;timers.c: 72: char LeapYear(unsigned int year)
+[v _LeapYear `(uc ~T0 @X0 1 ef1`ui ]
+"73
+[; ;timers.c: 73: {
 {
 [e :U _LeapYear ]
-"71
-[; ;timers.c: 71: char LeapYear(unsigned int year)
-[v _year `ui ~T0 @X0 1 r1 ]
 "72
-[; ;timers.c: 72: {
-[f ]
+[; ;timers.c: 72: char LeapYear(unsigned int year)
+[v _year `ui ~T0 @X0 1 r1 ]
 "73
-[; ;timers.c: 73:     char leapyear;
-[v _leapyear `uc ~T0 @X0 1 a ]
+[; ;timers.c: 73: {
+[f ]
 "74
-[; ;timers.c: 74:     if (year % 4 == 0 && year % 100 != 0) {
+[; ;timers.c: 74:     char leapyear;
+[v _leapyear `uc ~T0 @X0 1 a ]
+"75
+[; ;timers.c: 75:     if (year % 4 == 0 && year % 100 != 0) {
 [e $ ! && == % _year -> -> 4 `i `ui -> -> 0 `i `ui != % _year -> -> 100 `i `ui -> -> 0 `i `ui 2028  ]
 {
-"75
-[; ;timers.c: 75:         leapyear = 1;
-[e = _leapyear -> -> 1 `i `uc ]
 "76
-[; ;timers.c: 76:     } else if (year % 400 == 0) {
+[; ;timers.c: 76:         leapyear = 1;
+[e = _leapyear -> -> 1 `i `uc ]
+"77
+[; ;timers.c: 77:     } else if (year % 400 == 0) {
 }
 [e $U 2029  ]
 [e :U 2028 ]
 [e $ ! == % _year -> -> 400 `i `ui -> -> 0 `i `ui 2030  ]
 {
-"77
-[; ;timers.c: 77:         leapyear = 1;
-[e = _leapyear -> -> 1 `i `uc ]
 "78
-[; ;timers.c: 78:     } else {
+[; ;timers.c: 78:         leapyear = 1;
+[e = _leapyear -> -> 1 `i `uc ]
+"79
+[; ;timers.c: 79:     } else {
 }
 [e $U 2031  ]
 [e :U 2030 ]
 {
-"79
-[; ;timers.c: 79:         leapyear = 0;
-[e = _leapyear -> -> 0 `i `uc ]
 "80
-[; ;timers.c: 80:     }
+[; ;timers.c: 80:         leapyear = 0;
+[e = _leapyear -> -> 0 `i `uc ]
+"81
+[; ;timers.c: 81:     }
 }
 [e :U 2031 ]
 [e :U 2029 ]
-"81
-[; ;timers.c: 81:     return leapyear;
+"82
+[; ;timers.c: 82:     return leapyear;
 [e ) _leapyear ]
 [e $UE 2027  ]
-"82
-[; ;timers.c: 82: }
+"83
+[; ;timers.c: 83: }
 [e :UE 2027 ]
 }
-"87
-[; ;timers.c: 87: void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
-[v _SunPleaseFixTheDamnClock `(v ~T0 @X0 1 ef7`*i`*i`*i`*i`*i`*i`uc ]
 "88
-[; ;timers.c: 88: {
+[; ;timers.c: 88: void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
+[v _SunPleaseFixTheDamnClock `(v ~T0 @X0 1 ef7`*i`*i`*i`*i`*i`*i`uc ]
+"89
+[; ;timers.c: 89: {
 {
 [e :U _SunPleaseFixTheDamnClock ]
-"87
-[; ;timers.c: 87: void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
+"88
+[; ;timers.c: 88: void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
 [v _pdawnhour `*i ~T0 @X0 1 r1 ]
 [v _pdawnminute `*i ~T0 @X0 1 r2 ]
 [v _pduskhour `*i ~T0 @X0 1 r3 ]
@@ -2266,275 +2297,312 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _phour `*i ~T0 @X0 1 r5 ]
 [v _pminute `*i ~T0 @X0 1 r6 ]
 [v _DST `uc ~T0 @X0 1 r7 ]
-"88
-[; ;timers.c: 88: {
-[f ]
 "89
-[; ;timers.c: 89:     int avghour;
-[v _avghour `i ~T0 @X0 1 a ]
+[; ;timers.c: 89: {
+[f ]
 "90
-[; ;timers.c: 90:     int avgminute;
+[; ;timers.c: 90:     int avghour;
+[v _avghour `i ~T0 @X0 1 a ]
+"91
+[; ;timers.c: 91:     int avgminute;
 [v _avgminute `i ~T0 @X0 1 a ]
-"92
-[; ;timers.c: 92:     if (DST) {*pdawnhour = *pdawnhour - 1; *pduskhour = *pduskhour - 1;}
-[e $ ! != -> _DST `i -> 0 `i 2033  ]
-{
-[e = *U _pdawnhour - *U _pdawnhour -> 1 `i ]
-[e = *U _pduskhour - *U _pduskhour -> 1 `i ]
-}
-[e :U 2033 ]
 "93
 [; ;timers.c: 93:     TimeAvg(*pdawnhour, *pdawnminute, *pduskhour, *pduskminute, &avghour, &avgminute);
 [e ( _TimeAvg (4 , , , , , *U _pdawnhour *U _pdawnminute *U _pduskhour *U _pduskminute &U _avghour &U _avgminute ]
 "94
-[; ;timers.c: 94:     if (DST) {*pdawnhour = *pdawnhour + 1; *pduskhour = *pduskhour + 1;}
-[e $ ! != -> _DST `i -> 0 `i 2034  ]
-{
-[e = *U _pdawnhour + *U _pdawnhour -> 1 `i ]
-[e = *U _pduskhour + *U _pduskhour -> 1 `i ]
-}
-[e :U 2034 ]
-"95
-[; ;timers.c: 95:     int timedifference = TimeDiff(avghour, avgminute, 12, 0);
+[; ;timers.c: 94:     int timedifference = TimeDiff(avghour, avgminute, 12, 0);
 [v _timedifference `i ~T0 @X0 1 a ]
 [e = _timedifference ( _TimeDiff (4 , , , _avghour _avgminute -> 12 `i -> 0 `i ]
-"97
-[; ;timers.c: 97:     if (timedifference > 30 || timedifference < -30) {
-[e $ ! || > _timedifference -> 30 `i < _timedifference -U -> 30 `i 2035  ]
+"96
+[; ;timers.c: 96:     if (timedifference > 30 || timedifference < -30) {
+[e $ ! || > _timedifference -> 30 `i < _timedifference -U -> 30 `i 2033  ]
 {
-"98
-[; ;timers.c: 98:         *pminute = timedifference % 60;
+"97
+[; ;timers.c: 97:         *pminute = timedifference % 60;
 [e = *U _pminute % _timedifference -> 60 `i ]
-"99
-[; ;timers.c: 99:         *pdawnminute = *pdawnminute + timedifference % 60;
+"98
+[; ;timers.c: 98:         *pdawnminute = *pdawnminute + timedifference % 60;
 [e = *U _pdawnminute + *U _pdawnminute % _timedifference -> 60 `i ]
-"100
-[; ;timers.c: 100:         *pduskminute = *pduskminute + timedifference % 60;
+"99
+[; ;timers.c: 99:         *pduskminute = *pduskminute + timedifference % 60;
 [e = *U _pduskminute + *U _pduskminute % _timedifference -> 60 `i ]
-"102
-[; ;timers.c: 102:         if (*pminute < 0) {--*phour; *pminute = *pminute + 60;}
-[e $ ! < *U _pminute -> 0 `i 2036  ]
+"101
+[; ;timers.c: 101:         if (*pminute < 0) {--*phour; *pminute = *pminute + 60;}
+[e $ ! < *U _pminute -> 0 `i 2034  ]
 {
 [e =- *U _phour -> 1 `i ]
 [e = *U _pminute + *U _pminute -> 60 `i ]
 }
-[e :U 2036 ]
-"104
-[; ;timers.c: 104:         if (*pdawnminute >= 60) {++*pdawnhour; *pdawnminute = *pdawnminute - 60;}
-[e $ ! >= *U _pdawnminute -> 60 `i 2037  ]
+[e :U 2034 ]
+"103
+[; ;timers.c: 103:         if (*pdawnminute >= 60) {++*pdawnhour; *pdawnminute = *pdawnminute - 60;}
+[e $ ! >= *U _pdawnminute -> 60 `i 2035  ]
 {
 [e =+ *U _pdawnhour -> 1 `i ]
 [e = *U _pdawnminute - *U _pdawnminute -> 60 `i ]
 }
-[e $U 2038  ]
-"105
-[; ;timers.c: 105:         else if (*pdawnminute < 0) {--*pdawnhour; *pdawnminute = *pdawnminute + 60;}
-[e :U 2037 ]
-[e $ ! < *U _pdawnminute -> 0 `i 2039  ]
+[e $U 2036  ]
+"104
+[; ;timers.c: 104:         else if (*pdawnminute < 0) {--*pdawnhour; *pdawnminute = *pdawnminute + 60;}
+[e :U 2035 ]
+[e $ ! < *U _pdawnminute -> 0 `i 2037  ]
 {
 [e =- *U _pdawnhour -> 1 `i ]
 [e = *U _pdawnminute + *U _pdawnminute -> 60 `i ]
 }
-[e :U 2039 ]
-[e :U 2038 ]
-"107
-[; ;timers.c: 107:         if (*pduskminute >= 60) {++*pduskhour; *pduskminute = *pduskminute - 60;}
-[e $ ! >= *U _pduskminute -> 60 `i 2040  ]
+[e :U 2037 ]
+[e :U 2036 ]
+"106
+[; ;timers.c: 106:         if (*pduskminute >= 60) {++*pduskhour; *pduskminute = *pduskminute - 60;}
+[e $ ! >= *U _pduskminute -> 60 `i 2038  ]
 {
 [e =+ *U _pduskhour -> 1 `i ]
 [e = *U _pduskminute - *U _pduskminute -> 60 `i ]
 }
-[e $U 2041  ]
-"108
-[; ;timers.c: 108:         else if (*pduskminute < 0) {--*pduskhour; *pduskminute = *pduskminute + 60;}
-[e :U 2040 ]
-[e $ ! < *U _pduskminute -> 0 `i 2042  ]
+[e $U 2039  ]
+"107
+[; ;timers.c: 107:         else if (*pduskminute < 0) {--*pduskhour; *pduskminute = *pduskminute + 60;}
+[e :U 2038 ]
+[e $ ! < *U _pduskminute -> 0 `i 2040  ]
 {
 [e =- *U _pduskhour -> 1 `i ]
 [e = *U _pduskminute + *U _pduskminute -> 60 `i ]
 }
-[e :U 2042 ]
-[e :U 2041 ]
-"110
-[; ;timers.c: 110:         *phour = 12 + timedifference / 60;
+[e :U 2040 ]
+[e :U 2039 ]
+"109
+[; ;timers.c: 109:         *phour = 12 + timedifference / 60;
 [e = *U _phour + -> 12 `i / _timedifference -> 60 `i ]
-"111
-[; ;timers.c: 111:         *pdawnhour = *pdawnhour + timedifference / 60;
+"110
+[; ;timers.c: 110:         *pdawnhour = *pdawnhour + timedifference / 60;
 [e = *U _pdawnhour + *U _pdawnhour / _timedifference -> 60 `i ]
-"112
-[; ;timers.c: 112:         *pduskhour = *pduskhour + timedifference / 60;
+"111
+[; ;timers.c: 111:         *pduskhour = *pduskhour + timedifference / 60;
 [e = *U _pduskhour + *U _pduskhour / _timedifference -> 60 `i ]
-"113
-[; ;timers.c: 113:     }
+"112
+[; ;timers.c: 112:     }
 }
-[e :U 2035 ]
-"114
-[; ;timers.c: 114: }
+[e :U 2033 ]
+"113
+[; ;timers.c: 113: }
 [e :UE 2032 ]
 }
-"119
-[; ;timers.c: 119: int TimeDiff(int hour1, int minute1, int hour2, int minute2)
+"118
+[; ;timers.c: 118: int TimeDiff(int hour1, int minute1, int hour2, int minute2)
 [v _TimeDiff `(i ~T0 @X0 1 ef4`i`i`i`i ]
-"120
-[; ;timers.c: 120: {
+"119
+[; ;timers.c: 119: {
 {
 [e :U _TimeDiff ]
-"119
-[; ;timers.c: 119: int TimeDiff(int hour1, int minute1, int hour2, int minute2)
+"118
+[; ;timers.c: 118: int TimeDiff(int hour1, int minute1, int hour2, int minute2)
 [v _hour1 `i ~T0 @X0 1 r1 ]
 [v _minute1 `i ~T0 @X0 1 r2 ]
 [v _hour2 `i ~T0 @X0 1 r3 ]
 [v _minute2 `i ~T0 @X0 1 r4 ]
-"120
-[; ;timers.c: 120: {
+"119
+[; ;timers.c: 119: {
 [f ]
+"120
+[; ;timers.c: 120:     if (hour2 > hour1) {
+[e $ ! > _hour2 _hour1 2042  ]
+{
 "121
-[; ;timers.c: 121:     if (hour2 > hour1) {
-[e $ ! > _hour2 _hour1 2044  ]
-{
-"122
-[; ;timers.c: 122:         while (hour2 > hour1) {
-[e $U 2045  ]
-[e :U 2046 ]
-{
-"123
-[; ;timers.c: 123:             --hour2;
-[e =- _hour2 -> 1 `i ]
-"124
-[; ;timers.c: 124:             minute2 = minute2 + 60;
-[e = _minute2 + _minute2 -> 60 `i ]
-"125
-[; ;timers.c: 125:         }
-}
-[e :U 2045 ]
-"122
-[; ;timers.c: 122:         while (hour2 > hour1) {
-[e $ > _hour2 _hour1 2046  ]
-[e :U 2047 ]
-"127
-[; ;timers.c: 127:     } else if (hour1 > hour2) {
-}
-[e $U 2048  ]
+[; ;timers.c: 121:         while (hour2 > hour1) {
+[e $U 2043  ]
 [e :U 2044 ]
-[e $ ! > _hour1 _hour2 2049  ]
 {
-"128
-[; ;timers.c: 128:         while (hour1 > hour2) {
-[e $U 2050  ]
-[e :U 2051 ]
+"122
+[; ;timers.c: 122:             --hour2;
+[e =- _hour2 -> 1 `i ]
+"123
+[; ;timers.c: 123:             minute2 = minute2 + 60;
+[e = _minute2 + _minute2 -> 60 `i ]
+"124
+[; ;timers.c: 124:         }
+}
+[e :U 2043 ]
+"121
+[; ;timers.c: 121:         while (hour2 > hour1) {
+[e $ > _hour2 _hour1 2044  ]
+[e :U 2045 ]
+"126
+[; ;timers.c: 126:     } else if (hour1 > hour2) {
+}
+[e $U 2046  ]
+[e :U 2042 ]
+[e $ ! > _hour1 _hour2 2047  ]
 {
-"129
-[; ;timers.c: 129:             --hour1;
-[e =- _hour1 -> 1 `i ]
-"130
-[; ;timers.c: 130:             minute1 = minute1 + 60;
-[e = _minute1 + _minute1 -> 60 `i ]
-"131
-[; ;timers.c: 131:         }
-}
-[e :U 2050 ]
-"128
-[; ;timers.c: 128:         while (hour1 > hour2) {
-[e $ > _hour1 _hour2 2051  ]
-[e :U 2052 ]
-"132
-[; ;timers.c: 132:     }
-}
+"127
+[; ;timers.c: 127:         while (hour1 > hour2) {
+[e $U 2048  ]
 [e :U 2049 ]
-[e :U 2048 ]
-"133
-[; ;timers.c: 133:     return minute2 - minute1;
-[e ) - _minute2 _minute1 ]
-[e $UE 2043  ]
-"134
-[; ;timers.c: 134: }
-[e :UE 2043 ]
+{
+"128
+[; ;timers.c: 128:             --hour1;
+[e =- _hour1 -> 1 `i ]
+"129
+[; ;timers.c: 129:             minute1 = minute1 + 60;
+[e = _minute1 + _minute1 -> 60 `i ]
+"130
+[; ;timers.c: 130:         }
 }
-"139
-[; ;timers.c: 139: void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute)
+[e :U 2048 ]
+"127
+[; ;timers.c: 127:         while (hour1 > hour2) {
+[e $ > _hour1 _hour2 2049  ]
+[e :U 2050 ]
+"131
+[; ;timers.c: 131:     }
+}
+[e :U 2047 ]
+[e :U 2046 ]
+"132
+[; ;timers.c: 132:     return minute2 - minute1;
+[e ) - _minute2 _minute1 ]
+[e $UE 2041  ]
+"133
+[; ;timers.c: 133: }
+[e :UE 2041 ]
+}
+"138
+[; ;timers.c: 138: void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute)
 [v _TimeAvg `(v ~T0 @X0 1 ef6`i`i`i`i`*i`*i ]
-"140
-[; ;timers.c: 140: {
+"139
+[; ;timers.c: 139: {
 {
 [e :U _TimeAvg ]
-"139
-[; ;timers.c: 139: void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute)
+"138
+[; ;timers.c: 138: void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute)
 [v _hour1 `i ~T0 @X0 1 r1 ]
 [v _minute1 `i ~T0 @X0 1 r2 ]
 [v _hour2 `i ~T0 @X0 1 r3 ]
 [v _minute2 `i ~T0 @X0 1 r4 ]
 [v _pavghour `*i ~T0 @X0 1 r5 ]
 [v _pavgminute `*i ~T0 @X0 1 r6 ]
-"140
-[; ;timers.c: 140: {
+"139
+[; ;timers.c: 139: {
 [f ]
-"141
-[; ;timers.c: 141:     int HalfTimeDiff = TimeDiff(hour1, minute1, hour2, minute2) / 2;
+"140
+[; ;timers.c: 140:     int HalfTimeDiff = TimeDiff(hour1, minute1, hour2, minute2) / 2;
 [v _HalfTimeDiff `i ~T0 @X0 1 a ]
 [e = _HalfTimeDiff / ( _TimeDiff (4 , , , _hour1 _minute1 _hour2 _minute2 -> 2 `i ]
-"143
-[; ;timers.c: 143:     *pavghour = hour1 + HalfTimeDiff / 60;
+"142
+[; ;timers.c: 142:     *pavghour = hour1 + HalfTimeDiff / 60;
 [e = *U _pavghour + _hour1 / _HalfTimeDiff -> 60 `i ]
-"144
-[; ;timers.c: 144:     *pavgminute = minute1 + HalfTimeDiff % 60;
+"143
+[; ;timers.c: 143:     *pavgminute = minute1 + HalfTimeDiff % 60;
 [e = *U _pavgminute + _minute1 % _HalfTimeDiff -> 60 `i ]
-"146
-[; ;timers.c: 146:     if (*pavgminute >= 60) {++*pavghour; *pavgminute = *pavgminute - 60;}
-[e $ ! >= *U _pavgminute -> 60 `i 2054  ]
+"145
+[; ;timers.c: 145:     if (*pavgminute >= 60) {++*pavghour; *pavgminute = *pavgminute - 60;}
+[e $ ! >= *U _pavgminute -> 60 `i 2052  ]
 {
 [e =+ *U _pavghour -> 1 `i ]
 [e = *U _pavgminute - *U _pavgminute -> 60 `i ]
 }
-[e $U 2055  ]
-"147
-[; ;timers.c: 147:     else if (*pavgminute < 0) {--*pavghour; *pavgminute = *pavgminute + 60;}
-[e :U 2054 ]
-[e $ ! < *U _pavgminute -> 0 `i 2056  ]
+[e $U 2053  ]
+"146
+[; ;timers.c: 146:     else if (*pavgminute < 0) {--*pavghour; *pavgminute = *pavgminute + 60;}
+[e :U 2052 ]
+[e $ ! < *U _pavgminute -> 0 `i 2054  ]
 {
 [e =- *U _pavghour -> 1 `i ]
 [e = *U _pavgminute + *U _pavgminute -> 60 `i ]
 }
-[e :U 2056 ]
-[e :U 2055 ]
-"148
-[; ;timers.c: 148: }
-[e :UE 2053 ]
+[e :U 2054 ]
+[e :U 2053 ]
+"147
+[; ;timers.c: 147: }
+[e :UE 2051 ]
 }
 "153
-[; ;timers.c: 153: void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute)
-[v _UpdateDawnDusk `(v ~T0 @X0 1 ef6`*i`*i`*i`*i`*i`*i ]
+[; ;timers.c: 153: void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
+[v _UpdateDawnDusk `(v ~T0 @X0 1 ef7`*i`*i`*i`*i`*i`*i`uc ]
 "154
 [; ;timers.c: 154: {
 {
 [e :U _UpdateDawnDusk ]
 "153
-[; ;timers.c: 153: void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute)
+[; ;timers.c: 153: void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
 [v _pdawnhour `*i ~T0 @X0 1 r1 ]
 [v _pdawnminute `*i ~T0 @X0 1 r2 ]
 [v _pduskhour `*i ~T0 @X0 1 r3 ]
 [v _pduskminute `*i ~T0 @X0 1 r4 ]
 [v _phour `*i ~T0 @X0 1 r5 ]
 [v _pminute `*i ~T0 @X0 1 r6 ]
+[v _DST `uc ~T0 @X0 1 r7 ]
 "154
 [; ;timers.c: 154: {
 [f ]
 "155
-[; ;timers.c: 155:     if (*phour < 12) {*pdawnhour = *phour; *pdawnminute = *pminute;}
-[e $ ! < *U _phour -> 12 `i 2058  ]
+[; ;timers.c: 155:     if (*phour < 12 && !LATHbits.LATH3) {
+[e $ ! && < *U _phour -> 12 `i ! != -> . . _LATHbits 0 3 `i -> 0 `i 2056  ]
 {
-[e = *U _pdawnhour *U _phour ]
+"156
+[; ;timers.c: 156:         if (DST) {
+[e $ ! != -> _DST `i -> 0 `i 2057  ]
+{
+"157
+[; ;timers.c: 157:             *pdawnhour = *phour - 1;
+[e = *U _pdawnhour - *U _phour -> 1 `i ]
+"158
+[; ;timers.c: 158:             *pdawnminute = *pminute;
 [e = *U _pdawnminute *U _pminute ]
+"159
+[; ;timers.c: 159:         } else {
+}
+[e $U 2058  ]
+[e :U 2057 ]
+{
+"160
+[; ;timers.c: 160:             *pdawnhour = *phour;
+[e = *U _pdawnhour *U _phour ]
+"161
+[; ;timers.c: 161:             *pdawnminute = *pminute;
+[e = *U _pdawnminute *U _pminute ]
+"162
+[; ;timers.c: 162:         }
+}
+[e :U 2058 ]
+"163
+[; ;timers.c: 163:     } else if (LATHbits.LATH3) {
 }
 [e $U 2059  ]
-"156
-[; ;timers.c: 156:     else {*pduskhour = *phour; *pduskminute = *pminute;}
-[e :U 2058 ]
+[e :U 2056 ]
+[e $ ! != -> . . _LATHbits 0 3 `i -> 0 `i 2060  ]
 {
-[e = *U _pduskhour *U _phour ]
+"164
+[; ;timers.c: 164:         if (DST) {
+[e $ ! != -> _DST `i -> 0 `i 2061  ]
+{
+"165
+[; ;timers.c: 165:             *pduskhour = *phour - 1;
+[e = *U _pduskhour - *U _phour -> 1 `i ]
+"166
+[; ;timers.c: 166:             *pduskminute = *pminute;
 [e = *U _pduskminute *U _pminute ]
+"167
+[; ;timers.c: 167:         } else {
 }
+[e $U 2062  ]
+[e :U 2061 ]
+{
+"168
+[; ;timers.c: 168:             *pduskhour = *phour;
+[e = *U _pduskhour *U _phour ]
+"169
+[; ;timers.c: 169:             *pduskminute = *pminute;
+[e = *U _pduskminute *U _pminute ]
+"170
+[; ;timers.c: 170:         }
+}
+[e :U 2062 ]
+"171
+[; ;timers.c: 171:     }
+}
+[e :U 2060 ]
 [e :U 2059 ]
-"157
-[; ;timers.c: 157: }
-[e :UE 2057 ]
+"172
+[; ;timers.c: 172: }
+[e :UE 2055 ]
 }

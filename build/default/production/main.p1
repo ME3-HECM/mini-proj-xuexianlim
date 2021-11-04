@@ -22,8 +22,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./lights.h: 18: void SmallHours(int hour, int minute);
 [v _SmallHours `(v ~T0 @X0 0 ef2`i`i ]
 "15 ./timers.h
-[; ;./timers.h: 15: void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute);
-[v _UpdateDawnDusk `(v ~T0 @X0 0 ef6`*i`*i`*i`*i`*i`*i ]
+[; ;./timers.h: 15: void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
+[v _UpdateDawnDusk `(v ~T0 @X0 0 ef7`*i`*i`*i`*i`*i`*i`uc ]
 "12
 [; ;./timers.h: 12: void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
 [v _SunPleaseFixTheDamnClock `(v ~T0 @X0 0 ef7`*i`*i`*i`*i`*i`*i`uc ]
@@ -2111,8 +2111,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != -> _dawndusk `i -> 0 `i 2020  ]
 {
 "48
-[; ;main.c: 48:             UpdateDawnDusk(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute);
-[e ( _UpdateDawnDusk (4 , , , , , &U _dawnhour &U _dawnminute &U _duskhour &U _duskminute &U _hour &U _minute ]
+[; ;main.c: 48:             UpdateDawnDusk(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute, DST);
+[e ( _UpdateDawnDusk (4 , , , , , , &U _dawnhour &U _dawnminute &U _duskhour &U _duskminute &U _hour &U _minute _DST ]
 "49
 [; ;main.c: 49:             dawndusk = 0;
 [e = _dawndusk -> -> 0 `i `uc ]

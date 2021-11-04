@@ -24240,8 +24240,14 @@ char LeapYear(unsigned int year);
 void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
 int TimeDiff(int hour1, int minute1, int hour2, int minute2);
 void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int *pavgminute);
-void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute);
+void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST);
 # 3 "timers.c" 2
+# 1 "./lights.h" 1
+# 16 "./lights.h"
+void Lights_init(void);
+void LEDarray_disp_bin(int number);
+void SmallHours(int hour, int minute);
+# 4 "timers.c" 2
 
 
 
@@ -24250,7 +24256,7 @@ void Timer0_init(void)
 {
     T0CON1bits.T0CS=0b010;
     T0CON1bits.T0ASYNC=1;
-    T0CON1bits.T0CKPS=0b1110;
+    T0CON1bits.T0CKPS=0b0010;
     T0CON0bits.T016BIT=1;
 
 
@@ -24331,9 +24337,7 @@ void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, 
     int avghour;
     int avgminute;
 
-    if (DST) {*pdawnhour = *pdawnhour - 1; *pduskhour = *pduskhour - 1;}
     TimeAvg(*pdawnhour, *pdawnminute, *pduskhour, *pduskminute, &avghour, &avgminute);
-    if (DST) {*pdawnhour = *pdawnhour + 1; *pduskhour = *pduskhour + 1;}
     int timedifference = TimeDiff(avghour, avgminute, 12, 0);
 
     if (timedifference > 30 || timedifference < -30) {
@@ -24392,8 +24396,24 @@ void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int 
 
 
 
-void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute)
+
+void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
 {
-    if (*phour < 12) {*pdawnhour = *phour; *pdawnminute = *pminute;}
-    else {*pduskhour = *phour; *pduskminute = *pminute;}
+    if (*phour < 12 && !LATHbits.LATH3) {
+        if (DST) {
+            *pdawnhour = *phour - 1;
+            *pdawnminute = *pminute;
+        } else {
+            *pdawnhour = *phour;
+            *pdawnminute = *pminute;
+        }
+    } else if (LATHbits.LATH3) {
+        if (DST) {
+            *pduskhour = *phour - 1;
+            *pduskminute = *pminute;
+        } else {
+            *pduskhour = *phour;
+            *pduskminute = *pminute;
+        }
+    }
 }

@@ -49,17 +49,17 @@
 [v _SmallHours SmallHours `(v  1 e 1 0 ]
 "17 C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"7 C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\timers.c
+"8 C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\timers.c
 [v _Timer0_init Timer0_init `(v  1 e 1 0 ]
-"24
+"25
 [v _Timekeeper Timekeeper `(v  1 e 1 0 ]
-"71
+"72
 [v _LeapYear LeapYear `(uc  1 e 1 0 ]
-"87
+"88
 [v _SunPleaseFixTheDamnClock SunPleaseFixTheDamnClock `(v  1 e 1 0 ]
-"119
+"118
 [v _TimeDiff TimeDiff `(i  1 e 2 0 ]
-"139
+"138
 [v _TimeAvg TimeAvg `(v  1 e 1 0 ]
 "153
 [v _UpdateDawnDusk UpdateDawnDusk `(v  1 e 1 0 ]
@@ -202,7 +202,7 @@
 ]
 [u S147 . 1 `S137 1 . 1 0 `S139 1 . 1 0 `S143 1 . 1 0 ]
 [v _CM1PCHbits CM1PCHbits `VES147  1 e 1 @3795 ]
-[s S593 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S594 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -212,7 +212,7 @@
 `uc 1 LATA7 1 0 :1:7 
 ]
 "28496
-[s S602 . 1 `uc 1 LA0 1 0 :1:0 
+[s S603 . 1 `uc 1 LA0 1 0 :1:0 
 `uc 1 LA1 1 0 :1:1 
 `uc 1 LA2 1 0 :1:2 
 `uc 1 LA3 1 0 :1:3 
@@ -221,9 +221,9 @@
 `uc 1 LA6 1 0 :1:6 
 `uc 1 LA7 1 0 :1:7 
 ]
-[u S611 . 1 `S593 1 . 1 0 `S602 1 . 1 0 ]
-[v _LATAbits LATAbits `VES611  1 e 1 @3961 ]
-[s S633 . 1 `uc 1 LATF0 1 0 :1:0 
+[u S612 . 1 `S594 1 . 1 0 `S603 1 . 1 0 ]
+[v _LATAbits LATAbits `VES612  1 e 1 @3961 ]
+[s S634 . 1 `uc 1 LATF0 1 0 :1:0 
 `uc 1 LATF1 1 0 :1:1 
 `uc 1 LATF2 1 0 :1:2 
 `uc 1 LATF3 1 0 :1:3 
@@ -233,7 +233,7 @@
 `uc 1 LATF7 1 0 :1:7 
 ]
 "29056
-[s S642 . 1 `uc 1 LF0 1 0 :1:0 
+[s S643 . 1 `uc 1 LF0 1 0 :1:0 
 `uc 1 LF1 1 0 :1:1 
 `uc 1 LF2 1 0 :1:2 
 `uc 1 LF3 1 0 :1:3 
@@ -242,9 +242,9 @@
 `uc 1 LF6 1 0 :1:6 
 `uc 1 LF7 1 0 :1:7 
 ]
-[u S651 . 1 `S633 1 . 1 0 `S642 1 . 1 0 ]
-[v _LATFbits LATFbits `VES651  1 e 1 @3966 ]
-[s S559 . 1 `uc 1 LATG0 1 0 :1:0 
+[u S652 . 1 `S634 1 . 1 0 `S643 1 . 1 0 ]
+[v _LATFbits LATFbits `VES652  1 e 1 @3966 ]
+[s S560 . 1 `uc 1 LATG0 1 0 :1:0 
 `uc 1 LATG1 1 0 :1:1 
 `uc 1 LATG2 1 0 :1:2 
 `uc 1 LATG3 1 0 :1:3 
@@ -254,14 +254,14 @@
 `uc 1 LATG7 1 0 :1:7 
 ]
 "29165
-[s S568 . 1 `uc 1 LG0 1 0 :1:0 
+[s S569 . 1 `uc 1 LG0 1 0 :1:0 
 `uc 1 LG1 1 0 :1:1 
 `uc 1 LG2 1 0 :1:2 
 `uc 1 LG3 1 0 :1:3 
 `uc 1 LG4 1 0 :1:4 
 ]
-[u S574 . 1 `S559 1 . 1 0 `S568 1 . 1 0 ]
-[v _LATGbits LATGbits `VES574  1 e 1 @3967 ]
+[u S575 . 1 `S560 1 . 1 0 `S569 1 . 1 0 ]
+[v _LATGbits LATGbits `VES575  1 e 1 @3967 ]
 [s S395 . 1 `uc 1 LATH0 1 0 :1:0 
 `uc 1 LATH1 1 0 :1:1 
 `uc 1 LATH2 1 0 :1:2 
@@ -287,7 +287,7 @@
 ]
 [u S417 . 1 `S395 1 . 1 0 `S400 1 . 1 0 `S405 1 . 1 0 `S408 1 . 1 0 `S411 1 . 1 0 `S414 1 . 1 0 ]
 [v _LATHbits LATHbits `VES417  1 e 1 @3968 ]
-[s S724 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S725 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -297,8 +297,8 @@
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "29352
-[u S733 . 1 `S724 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES733  1 e 1 @3969 ]
+[u S734 . 1 `S725 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES734  1 e 1 @3969 ]
 [s S91 . 1 `uc 1 TRISF0 1 0 :1:0 
 `uc 1 TRISF1 1 0 :1:1 
 `uc 1 TRISF2 1 0 :1:2 
@@ -311,7 +311,7 @@
 "29957
 [u S100 . 1 `S91 1 . 1 0 ]
 [v _TRISFbits TRISFbits `VES100  1 e 1 @3974 ]
-[s S703 . 1 `uc 1 TRISG0 1 0 :1:0 
+[s S704 . 1 `uc 1 TRISG0 1 0 :1:0 
 `uc 1 TRISG1 1 0 :1:1 
 `uc 1 TRISG2 1 0 :1:2 
 `uc 1 TRISG3 1 0 :1:3 
@@ -321,43 +321,43 @@
 `uc 1 TRISG7 1 0 :1:7 
 ]
 "30019
-[u S712 . 1 `S703 1 . 1 0 ]
-[v _TRISGbits TRISGbits `VES712  1 e 1 @3975 ]
-[s S757 . 1 `uc 1 TRISH0 1 0 :1:0 
+[u S713 . 1 `S704 1 . 1 0 ]
+[v _TRISGbits TRISGbits `VES713  1 e 1 @3975 ]
+[s S758 . 1 `uc 1 TRISH0 1 0 :1:0 
 `uc 1 TRISH1 1 0 :1:1 
 `uc 1 TRISH2 1 0 :1:2 
 `uc 1 TRISH3 1 0 :1:3 
 ]
 "30072
-[u S762 . 1 `S757 1 . 1 0 ]
-[v _TRISHbits TRISHbits `VES762  1 e 1 @3976 ]
+[u S763 . 1 `S758 1 . 1 0 ]
+[v _TRISHbits TRISHbits `VES763  1 e 1 @3976 ]
 "39189
 [v _TMR0L TMR0L `VEuc  1 e 1 @4051 ]
 "39327
 [v _TMR0H TMR0H `VEuc  1 e 1 @4052 ]
-[s S886 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S887 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T016BIT 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
 "39601
-[s S892 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
+[s S893 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
 `uc 1 T0OUTPS1 1 0 :1:1 
 `uc 1 T0OUTPS2 1 0 :1:2 
 `uc 1 T0OUTPS3 1 0 :1:3 
 ]
 "39601
-[u S897 . 1 `S886 1 . 1 0 `S892 1 . 1 0 ]
+[u S898 . 1 `S887 1 . 1 0 `S893 1 . 1 0 ]
 "39601
 "39601
-[v _T0CON0bits T0CON0bits `VES897  1 e 1 @4053 ]
-[s S840 . 1 `uc 1 T0CKPS 1 0 :4:0 
+[v _T0CON0bits T0CON0bits `VES898  1 e 1 @4053 ]
+[s S841 . 1 `uc 1 T0CKPS 1 0 :4:0 
 `uc 1 T0ASYNC 1 0 :1:4 
 `uc 1 T0CS 1 0 :3:5 
 ]
 "39677
-[s S844 . 1 `uc 1 T0CKPS0 1 0 :1:0 
+[s S845 . 1 `uc 1 T0CKPS0 1 0 :1:0 
 `uc 1 T0CKPS1 1 0 :1:1 
 `uc 1 T0CKPS2 1 0 :1:2 
 `uc 1 T0CKPS3 1 0 :1:3 
@@ -367,19 +367,19 @@
 `uc 1 T0CS2 1 0 :1:7 
 ]
 "39677
-[s S853 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S854 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 T0PS3 1 0 :1:3 
 ]
 "39677
-[s S858 . 1 `uc 1 T0PS 1 0 :4:0 
+[s S859 . 1 `uc 1 T0PS 1 0 :4:0 
 ]
 "39677
-[u S860 . 1 `S840 1 . 1 0 `S844 1 . 1 0 `S853 1 . 1 0 `S858 1 . 1 0 ]
+[u S861 . 1 `S841 1 . 1 0 `S845 1 . 1 0 `S854 1 . 1 0 `S859 1 . 1 0 ]
 "39677
 "39677
-[v _T0CON1bits T0CON1bits `VES860  1 e 1 @4054 ]
+[v _T0CON1bits T0CON1bits `VES861  1 e 1 @4054 ]
 [s S293 . 1 `uc 1 INT0EDG 1 0 :1:0 
 `uc 1 INT1EDG 1 0 :1:1 
 `uc 1 INT2EDG 1 0 :1:2 
@@ -411,20 +411,20 @@
 [v main@hour hour `i  1 a 2 74 ]
 "23
 [v main@minute minute `i  1 a 2 72 ]
-"28
-[v main@duskhour duskhour `i  1 a 2 69 ]
-"26
-[v main@dawnhour dawnhour `i  1 a 2 67 ]
 "29
-[v main@duskminute duskminute `i  1 a 2 65 ]
+[v main@duskminute duskminute `i  1 a 2 69 ]
 "27
-[v main@dawnminute dawnminute `i  1 a 2 63 ]
+[v main@dawnminute dawnminute `i  1 a 2 67 ]
+"28
+[v main@duskhour duskhour `i  1 a 2 64 ]
+"26
+[v main@dawnhour dawnhour `i  1 a 2 62 ]
 "19
 [v main@year year `ui  1 a 2 58 ]
 "20
 [v main@month month `uc  1 a 1 71 ]
 "21
-[v main@day day `uc  1 a 1 62 ]
+[v main@day day `uc  1 a 1 66 ]
 "25
 [v main@DST DST `uc  1 a 1 61 ]
 "24
@@ -440,14 +440,15 @@
 [v UpdateDawnDusk@pduskminute pduskminute `*.39i  1 p 2 6 ]
 [v UpdateDawnDusk@phour phour `*.39i  1 p 2 8 ]
 [v UpdateDawnDusk@pminute pminute `*.39i  1 p 2 10 ]
-"157
+[v UpdateDawnDusk@DST DST `uc  1 p 1 12 ]
+"172
 } 0
-"7
+"8
 [v _Timer0_init Timer0_init `(v  1 e 1 0 ]
 {
-"19
+"20
 } 0
-"24
+"25
 [v _Timekeeper Timekeeper `(v  1 e 1 0 ]
 {
 [v Timekeeper@pyear pyear `*.39ui  1 p 2 10 ]
@@ -457,16 +458,16 @@
 [v Timekeeper@pminute pminute `*.39i  1 p 2 18 ]
 [v Timekeeper@pdayofweek pdayofweek `*.39uc  1 p 2 20 ]
 [v Timekeeper@pDST pDST `*.39uc  1 p 2 22 ]
-"66
+"67
 } 0
-"71
+"72
 [v _LeapYear LeapYear `(uc  1 e 1 0 ]
 {
-"73
+"74
 [v LeapYear@leapyear leapyear `uc  1 a 1 9 ]
-"71
+"72
 [v LeapYear@year year `ui  1 p 2 5 ]
-"82
+"83
 } 0
 "7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
@@ -478,16 +479,16 @@
 [v ___lwmod@divisor divisor `ui  1 p 2 2 ]
 "25
 } 0
-"87 C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\timers.c
+"88 C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\timers.c
 [v _SunPleaseFixTheDamnClock SunPleaseFixTheDamnClock `(v  1 e 1 0 ]
 {
-"95
+"94
 [v SunPleaseFixTheDamnClock@timedifference timedifference `i  1 a 2 56 ]
-"90
+"91
 [v SunPleaseFixTheDamnClock@avgminute avgminute `i  1 a 2 54 ]
-"89
+"90
 [v SunPleaseFixTheDamnClock@avghour avghour `i  1 a 2 52 ]
-"87
+"88
 [v SunPleaseFixTheDamnClock@pdawnhour pdawnhour `*.39i  1 p 2 35 ]
 [v SunPleaseFixTheDamnClock@pdawnminute pdawnminute `*.39i  1 p 2 37 ]
 [v SunPleaseFixTheDamnClock@pduskhour pduskhour `*.39i  1 p 2 39 ]
@@ -495,21 +496,21 @@
 [v SunPleaseFixTheDamnClock@phour phour `*.39i  1 p 2 43 ]
 [v SunPleaseFixTheDamnClock@pminute pminute `*.39i  1 p 2 45 ]
 [v SunPleaseFixTheDamnClock@DST DST `uc  1 p 1 47 ]
-"114
+"113
 } 0
-"139
+"138
 [v _TimeAvg TimeAvg `(v  1 e 1 0 ]
 {
-"141
+"140
 [v TimeAvg@HalfTimeDiff HalfTimeDiff `i  1 a 2 33 ]
-"139
+"138
 [v TimeAvg@hour1 hour1 `i  1 p 2 17 ]
 [v TimeAvg@minute1 minute1 `i  1 p 2 19 ]
 [v TimeAvg@hour2 hour2 `i  1 p 2 21 ]
 [v TimeAvg@minute2 minute2 `i  1 p 2 23 ]
 [v TimeAvg@pavghour pavghour `*.39i  1 p 2 25 ]
 [v TimeAvg@pavgminute pavgminute `*.39i  1 p 2 27 ]
-"148
+"147
 } 0
 "7 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -535,14 +536,14 @@
 [v ___awdiv@divisor divisor `i  1 p 2 11 ]
 "41
 } 0
-"119 C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\timers.c
+"118 C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\timers.c
 [v _TimeDiff TimeDiff `(i  1 e 2 0 ]
 {
 [v TimeDiff@hour1 hour1 `i  1 p 2 0 ]
 [v TimeDiff@minute1 minute1 `i  1 p 2 2 ]
 [v TimeDiff@hour2 hour2 `i  1 p 2 4 ]
 [v TimeDiff@minute2 minute2 `i  1 p 2 6 ]
-"134
+"133
 } 0
 "42 C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\lights.c
 [v _SmallHours SmallHours `(v  1 e 1 0 ]

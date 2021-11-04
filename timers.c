@@ -1,5 +1,6 @@
 #include <xc.h>
 #include "timers.h"
+#include "lights.h"
 
 /************************************
  * Set up Timer0
@@ -89,9 +90,7 @@ void SunPleaseFixTheDamnClock(int *pdawnhour, int *pdawnminute, int *pduskhour, 
     int avghour; //after removing the effect of DST, this midpoint time between dawn and dusk should theoretically always be 12 noon 
     int avgminute; //any deviation will therefore give info about whether the clock is fast or slow and by how much
     
-    if (DST) {*pdawnhour = *pdawnhour - 1; *pduskhour = *pduskhour - 1;} //remove effect of DST
     TimeAvg(*pdawnhour, *pdawnminute, *pduskhour, *pduskminute, &avghour, &avgminute); //calculate solar noon time based on the dusk and dawn times
-    if (DST) {*pdawnhour = *pdawnhour + 1; *pduskhour = *pduskhour + 1;} //reinstate effect of DST
     int timedifference = TimeDiff(avghour, avgminute, 12, 0); //difference between theoretical and actual solar noon time
             
     if (timedifference > 30 || timedifference < -30) { //±30-min tolerance before the time gets synced to the sun
@@ -149,9 +148,25 @@ void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int 
 
 /************************************
  * Updates the dawn and dusk times
+ * These times are always displayed in GMT regardless of whether the UK is currently in DST
 ************************************/
-void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute)
+void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
 {
-    if (*phour < 12) {*pdawnhour = *phour; *pdawnminute = *pminute;} //dawn is before noon
-    else {*pduskhour = *phour; *pduskminute = *pminute;} //dusk is after noon
+    if (*phour < 12 && !LIGHTS) { //dawn is before noon and lights should be off
+        if (DST) {
+            *pdawnhour = *phour - 1; //remove effect of DST
+            *pdawnminute = *pminute;
+        } else {
+            *pdawnhour = *phour;
+            *pdawnminute = *pminute;
+        }
+    } else if (LIGHTS) { //dusk is after noon and lights should be on
+        if (DST) {
+            *pduskhour = *phour - 1; //remove effect of DST
+            *pduskminute = *pminute;
+        } else {
+            *pduskhour = *phour;
+            *pduskminute = *pminute;
+        }
+    }
 }
