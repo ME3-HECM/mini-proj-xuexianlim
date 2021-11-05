@@ -7,6 +7,6 @@
 
 //flags for the 2 ISRs
 char minutehand = 0;
-char dawndusk = 0;
+char dawndusk = 0; //1 if dawn, 2 if dusk
 
 #endif

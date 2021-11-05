@@ -9,7 +9,6 @@
       <itemPath>lights.h</itemPath>
       <itemPath>timers.h</itemPath>
       <itemPath>flags.h</itemPath>
-      <itemPath>LCD.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -23,7 +22,6 @@
       <itemPath>main.c</itemPath>
       <itemPath>lights.c</itemPath>
       <itemPath>timers.c</itemPath>
-      <itemPath>LCD.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

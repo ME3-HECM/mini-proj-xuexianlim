@@ -10,7 +10,7 @@ void Timer0_init(void)
 {
     T0CON1bits.T0CS=0b010; //Fosc/4
     T0CON1bits.T0ASYNC=1; //input to Timer0 counter not synced to sys clocks (needed to ensure correct operation with Fosc/4 as clock source)
-    T0CON1bits.T0CKPS=0b0010; //1:16384 prescaler (0b1110 - modify this to speed up time for testing)
+    T0CON1bits.T0CKPS=0b1110; //1:16384 prescaler (0b1110 - modify this to speed up time for testing)
     T0CON0bits.T016BIT=1; //16-bit mode
     //4*16384/(64*10^6) = 1.024*10^-3 s
     //60/(1.024*10^-3) = 58593
@@ -159,13 +159,13 @@ void TimeAvg(int hour1, int minute1, int hour2, int minute2, int *pavghour, int 
 ************************************/
 void UpdateDawnDusk(int *pdawnhour, int *pdawnminute, int *pduskhour, int *pduskminute, int *phour, int *pminute, char DST)
 {
-    if (dawndusk == 1) { //dawn is before noon and lights should be off
-        *pdawnhour = *phour - DST; //remove effect of DST
+    if (dawndusk == 1) {
+        *pdawnhour = *phour - DST; //update dawn hour and remove effect of DST
         *pdawnminute = *pminute;
     }
     
     if (dawndusk == 2) {
-        *pduskhour = *phour - DST; //remove effect of DST
+        *pduskhour = *phour - DST; //update dusk hour and remove effect of DST
         *pduskminute = *pminute;
     }
 }
