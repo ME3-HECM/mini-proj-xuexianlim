@@ -4,5 +4,4 @@ lights.h  \
 timers.h  \
 interrupts.h  \
 comparator.h  \
-flags.h  \
-LCD.h 
+flags.h 
