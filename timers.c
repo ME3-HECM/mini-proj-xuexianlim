@@ -13,10 +13,10 @@ void Timer0_init(void)
     T0CON1bits.T0CKPS=0b1110; //1:16384 prescaler (0b1110 - modify this to speed up time for testing)
     T0CON0bits.T016BIT=1; //16-bit mode
     //4*16384/(64*10^6) = 1.024*10^-3 s
-    //60/(1.024*10^-3) = 58593
-    //2^16-1-58593 = 6942 = 0b0001101100011110
-    TMR0H=0b00011011; //initialise Timer0 with 6942 so its overflows after 1 min
-    TMR0L=0b00011110;
+    //60/(1.024*10^-3) = 58594
+    //2^16-1-58594 = 6941 = 0b0001101100011101
+    TMR0H=0b00011011; //initialise Timer0 with 6941 so its overflows after 1 min
+    TMR0L=0b00011101;
     T0CON0bits.T0EN=1; //start Timer0
 }
 

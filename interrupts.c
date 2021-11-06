@@ -21,8 +21,8 @@ void __interrupt() ISR()
 {
     if (PIR0bits.TMR0IF == 1) { //Timer0
         minutehand = 1;
-        TMR0H=0b00011011; //reset Timer0 to 6942
-        TMR0L=0b00011110;
+        TMR0H=0b00011011; //reset Timer0 to 6941
+        TMR0L=0b00011101;
         PIR0bits.TMR0IF = 0;
     }
 
