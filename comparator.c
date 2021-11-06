@@ -8,7 +8,7 @@ void DAC_init(void)
 {
     DAC1CON0bits.PSS = 0b00; //3.3V for positive source (Vdd)
     DAC1CON0bits.NSS = 0b0; //0v for Negative source (Vss)
-	//5-bit DAC value to set output voltage
+    //5-bit DAC value to set output voltage
     //min is 0 = 0 V
     //max is 2^5-1 = 31 = 3.3 V
     DAC1CON1bits.DAC1R = 0b11011; //adjust according to ambient light 27 ~ 2.87 V

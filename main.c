@@ -28,7 +28,7 @@ void main(void) {
     int duskhour = 17;
     int duskminute = 0;
     
-	//initialisation functions to set up the hardware modules
+    //initialisation functions to set up the hardware modules
     Lights_init();
     Timer0_init();
     Comp1_init();

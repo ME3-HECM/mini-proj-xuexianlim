@@ -7,7 +7,7 @@
 ************************************/
 void Interrupts_init(void)
 {
-	//turn on global interrupts, peripheral interrupts and the interrupt sources
+    //turn on global interrupts, peripheral interrupts and the interrupt sources
     PIE0bits.TMR0IE = 1; //enable interrupts from Timer0
     PIE2bits.C1IE = 1; //enable interrupts from Comparator 1
     INTCONbits.PEIE = 1; //peripheral interrupts
