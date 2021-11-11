@@ -2154,8 +2154,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 24:         TMR0H=0b00011011;
 [e = _TMR0H -> -> 27 `i `uc ]
 "25
-[; ;interrupts.c: 25:         TMR0L=0b00011110;
-[e = _TMR0L -> -> 30 `i `uc ]
+[; ;interrupts.c: 25:         TMR0L=0b00011101;
+[e = _TMR0L -> -> 29 `i `uc ]
 "26
 [; ;interrupts.c: 26:         PIR0bits.TMR0IF = 0;
 [e = . . _PIR0bits 0 5 -> -> 0 `i `uc ]

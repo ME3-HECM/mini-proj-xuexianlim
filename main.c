@@ -11,6 +11,7 @@
 #include "interrupts.h"
 #include "comparator.h"
 #include "flags.h"
+#include "LCD.h"
 
 #define _XTAL_FREQ 64000000
 
@@ -18,10 +19,10 @@ void main(void) {
     //user inputs date, time and DST status for initialisation
     unsigned int year = 2021;
     char month = 11;
-    char day = 5;
-    int hour = 7; //24-hour time format
-    int minute = 59;
-    char dayofweek = 5; //1 = Mon, 2 = Tue, 3 = Wed, 4 = Thu, 5 = Fri, 6 = Sat, 7 = Sun
+    char day = 11;
+    int hour = 9; //24-hour time format
+    int minute = 00;
+    char dayofweek = 4; //1 = Mon, 2 = Tue, 3 = Wed, 4 = Thu, 5 = Fri, 6 = Sat, 7 = Sun
     char DST = 0; //input whether the UK is currently in DST (1 = BST/DST, 0 = GMT)
     int dawnhour = 7; //input approximate dawn and dusk times in GMT
     int dawnminute = 0; //not too important to get it exactly accurate as it will be synced to the sun anyway
@@ -34,6 +35,7 @@ void main(void) {
     Comp1_init();
     Interrupts_init();
     dawndusk = 0; //prevent spurious setting of dusk timing after Comparator 1 powers up and Vn momentarily exceeds Vp
+    LCD_Init();
     
     while (1) {
         if (minutehand) {
@@ -53,5 +55,7 @@ void main(void) {
         if (hour == 12 && minute == 0) { //sync the clock to the sun at noon
             SunPleaseFixTheDamnClock(&dawnhour, &dawnminute, &duskhour, &duskminute, &hour, &minute, DST);
         }
+        
+        Display(year, month, day, hour, minute, dayofweek, DST, dawnhour, dawnminute, duskhour, duskminute); //display values on LCD for testing
     }
 }

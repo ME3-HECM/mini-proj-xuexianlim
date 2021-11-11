@@ -24263,7 +24263,7 @@ void __attribute__((picinterrupt(("")))) ISR()
     if (PIR0bits.TMR0IF == 1) {
         minutehand = 1;
         TMR0H=0b00011011;
-        TMR0L=0b00011110;
+        TMR0L=0b00011101;
         PIR0bits.TMR0IF = 0;
     }
 

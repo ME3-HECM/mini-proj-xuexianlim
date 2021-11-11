@@ -24268,13 +24268,13 @@ void Timer0_init(void)
 {
     T0CON1bits.T0CS=0b010;
     T0CON1bits.T0ASYNC=1;
-    T0CON1bits.T0CKPS=0b1110;
+    T0CON1bits.T0CKPS=0b0010;
     T0CON0bits.T016BIT=1;
 
 
 
     TMR0H=0b00011011;
-    TMR0L=0b00011110;
+    TMR0L=0b00011101;
     T0CON0bits.T0EN=1;
 }
 
