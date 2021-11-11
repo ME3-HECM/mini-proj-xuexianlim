@@ -11,7 +11,7 @@ void DAC_init(void)
     //5-bit DAC value to set output voltage
     //min is 0 = 0 V
     //max is 2^5-1 = 31 = 3.3 V
-    DAC1CON1bits.DAC1R = 0b11011; //adjust according to ambient light 27 ~ 2.87 V
+    DAC1CON1bits.DAC1R = 0b1111; //adjust according to ambient light 15 ~ 1.55 V
     DAC1CON0bits.DAC1EN = 1; //turn on DAC
 }
 

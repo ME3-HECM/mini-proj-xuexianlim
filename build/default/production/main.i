@@ -24292,10 +24292,10 @@ void main(void) {
 
     unsigned int year = 2021;
     char month = 11;
-    char day = 5;
-    int hour = 7;
-    int minute = 59;
-    char dayofweek = 5;
+    char day = 11;
+    int hour = 9;
+    int minute = 00;
+    char dayofweek = 4;
     char DST = 0;
     int dawnhour = 7;
     int dawnminute = 0;

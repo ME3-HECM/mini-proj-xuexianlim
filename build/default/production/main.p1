@@ -2035,21 +2035,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _month `uc ~T0 @X0 1 a ]
 [e = _month -> -> 11 `i `uc ]
 "21
-[; ;main.c: 21:     char day = 5;
+[; ;main.c: 21:     char day = 11;
 [v _day `uc ~T0 @X0 1 a ]
-[e = _day -> -> 5 `i `uc ]
+[e = _day -> -> 11 `i `uc ]
 "22
-[; ;main.c: 22:     int hour = 7;
+[; ;main.c: 22:     int hour = 9;
 [v _hour `i ~T0 @X0 1 a ]
-[e = _hour -> 7 `i ]
+[e = _hour -> 9 `i ]
 "23
-[; ;main.c: 23:     int minute = 59;
+[; ;main.c: 23:     int minute = 00;
 [v _minute `i ~T0 @X0 1 a ]
-[e = _minute -> 59 `i ]
+[e = _minute -> 0 `i ]
 "24
-[; ;main.c: 24:     char dayofweek = 5;
+[; ;main.c: 24:     char dayofweek = 4;
 [v _dayofweek `uc ~T0 @X0 1 a ]
-[e = _dayofweek -> -> 5 `i `uc ]
+[e = _dayofweek -> -> 4 `i `uc ]
 "25
 [; ;main.c: 25:     char DST = 0;
 [v _DST `uc ~T0 @X0 1 a ]

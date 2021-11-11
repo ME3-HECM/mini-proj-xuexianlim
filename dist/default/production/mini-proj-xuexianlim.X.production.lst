@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Thu Nov 04 23:59:56 2021
+                                                                                               Thu Nov 11 09:27:15 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	18F67K40
@@ -495,24 +495,24 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    476  000810  0E0B               	movlw	11
    477  000812  6E44               	movwf	main@month^0,c
    478                           
-   479                           ;main.c: 21:     char day = 5;
-   480  000814  0E05               	movlw	5
+   479                           ;main.c: 21:     char day = 11;
+   480  000814  0E0B               	movlw	11
    481  000816  6E41               	movwf	main@day^0,c
    482                           
-   483                           ;main.c: 22:     int hour = 7;
+   483                           ;main.c: 22:     int hour = 9;
    484  000818  0E00               	movlw	0
    485  00081A  6E48               	movwf	(main@hour+1)^0,c
-   486  00081C  0E07               	movlw	7
+   486  00081C  0E09               	movlw	9
    487  00081E  6E47               	movwf	main@hour^0,c
    488                           
-   489                           ;main.c: 23:     int minute = 59;
+   489                           ;main.c: 23:     int minute = 00;
    490  000820  0E00               	movlw	0
    491  000822  6E46               	movwf	(main@minute+1)^0,c
-   492  000824  0E3B               	movlw	59
+   492  000824  0E00               	movlw	0
    493  000826  6E45               	movwf	main@minute^0,c
    494                           
-   495                           ;main.c: 24:     char dayofweek = 5;
-   496  000828  0E05               	movlw	5
+   495                           ;main.c: 24:     char dayofweek = 4;
+   496  000828  0E04               	movlw	4
    497  00082A  6E39               	movwf	main@dayofweek^0,c
    498                           
    499                           ;main.c: 25:     char DST = 0;
@@ -3081,8 +3081,8 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   2966  000F4E  8FD0               	bsf	208,7,b	;volatile
   2967  000F50                     
   2968                           ; BSR set to: 14
-  2969                           ;comparator.c: 32:     _delay((unsigned long)((1)*(64000000/4000000.0)));
-  2970  000F50  0E05               	movlw	5
+  2969                           ;comparator.c: 32:     _delay((unsigned long)((10)*(64000000/4000000.0)));
+  2970  000F50  0E35               	movlw	53
   2971  000F52                     u1667:
   2972  000F52  2EE8               	decfsz	wreg,f,c
   2973  000F54  D7FE               	bra	u1667
@@ -3141,10 +3141,10 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   3021                           ;comparator.c: 10:     DAC1CON0bits.NSS = 0b0;
   3022  000F9A  91C6               	bcf	198,0,b	;volatile
   3023                           
-  3024                           ;comparator.c: 14:     DAC1CON1bits.DAC1R = 0b11011;
+  3024                           ;comparator.c: 14:     DAC1CON1bits.DAC1R = 0b1111;
   3025  000F9C  51C7               	movf	199,w,b	;volatile
   3026  000F9E  0BE0               	andlw	-32
-  3027  000FA0  091B               	iorlw	27
+  3027  000FA0  090F               	iorlw	15
   3028  000FA2  6FC7               	movwf	199,b	;volatile
   3029  000FA4                     
   3030                           ; BSR set to: 14
@@ -3883,7 +3883,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Thu Nov 04 23:59:56 2021
+Symbol Table                                                                                   Thu Nov 11 09:27:15 2021
 
                   Timekeeper@pdayofweek 0015                                      l22 0F58  
                                     l19 0FA6                                      l47 0FC0  

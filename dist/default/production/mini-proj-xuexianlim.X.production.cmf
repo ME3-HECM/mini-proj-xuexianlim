@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+$C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 idloc IDLOC 5 200000 200000 10 1
 init CODE 0 5A 5A 4 1
 reset_vec CODE 0 0 0 4 1
@@ -88,7 +88,7 @@ MEDIUMCONST 10E00-1FFFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\mini-proj-xuexianlim.X.production.o
-8 intcode CODE >10811:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
+8 intcode CODE >10811:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
 8 intcode CODE >20:C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\interrupts.c
 A intcode CODE >22:C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\interrupts.c
 1A intcode CODE >23:C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\interrupts.c
@@ -327,16 +327,16 @@ D6C text1 CODE >171:C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\
 924 text0 CODE >50:C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\main.c
 928 text0 CODE >53:C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\main.c
 94E text0 CODE >54:C:\Users\Lim Xue Xian\MPLABXProjects\mini-proj-xuexianlim.X\main.c
-FA8 cinit CODE >6773:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FA8 cinit CODE >6775:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FA8 cinit CODE >6778:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FA8 cinit CODE >6793:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FAA cinit CODE >6794:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FAC cinit CODE >6800:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FAC cinit CODE >6802:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FAE cinit CODE >6803:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FB0 cinit CODE >6804:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
-FB2 cinit CODE >6805:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.s
+FA8 cinit CODE >6773:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FA8 cinit CODE >6775:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FA8 cinit CODE >6778:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FA8 cinit CODE >6793:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FAA cinit CODE >6794:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FAC cinit CODE >6800:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FAC cinit CODE >6802:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FAE cinit CODE >6803:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FB0 cinit CODE >6804:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
+FB2 cinit CODE >6805:C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -360,15 +360,15 @@ __Hspace_2 0 0 ABS 0 - dist/default/production\mini-proj-xuexianlim.X.production
 __Hspace_4 60000C 0 ABS 0 - dist/default/production\mini-proj-xuexianlim.X.production.o
 SunPleaseFixTheDamnClock@pdawnminute 24 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\mini-proj-xuexianlim.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\mini-proj-xuexianlim.X.production.o
 __end_of_TimeAvg AA8 0 CODE 0 text7 dist/default/production\mini-proj-xuexianlim.X.production.o
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\mini-proj-xuexianlim.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+___sp 0 0 STACK 2 stack C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 _main 808 0 CODE 0 text0 dist/default/production\mini-proj-xuexianlim.X.production.o
 TimeAvg@HalfTimeDiff 20 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 btemp 4B 0 COMRAM 1 temp dist/default/production\mini-proj-xuexianlim.X.production.o
-start 5A 0 CODE 0 init C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+start 5A 0 CODE 0 init C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\mini-proj-xuexianlim.X.production.o
 __size_of___awmod 0 0 ABS 0 - dist/default/production\mini-proj-xuexianlim.X.production.o
 _UpdateDawnDusk CCA 0 CODE 0 text1 dist/default/production\mini-proj-xuexianlim.X.production.o
@@ -381,11 +381,11 @@ ___awmod@sign 6 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexia
 ttemp5 4C 0 COMRAM 1 temp dist/default/production\mini-proj-xuexianlim.X.production.o
 ttemp6 4F 0 COMRAM 1 temp dist/default/production\mini-proj-xuexianlim.X.production.o
 ttemp7 53 0 COMRAM 1 temp dist/default/production\mini-proj-xuexianlim.X.production.o
-__accesstop 60 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
-intlevel0 0 0 CODE 0 text C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
-intlevel1 0 0 CODE 0 text C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
-intlevel2 0 0 CODE 0 text C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
-intlevel3 0 0 CODE 0 text C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+__accesstop 60 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
+intlevel0 0 0 CODE 0 text C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
+intlevel1 0 0 CODE 0 text C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
+intlevel2 0 0 CODE 0 text C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
+intlevel3 0 0 CODE 0 text C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 main@dawnminute 3B 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 Timekeeper@pdayofweek 15 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
@@ -404,8 +404,8 @@ main@dayofweek 39 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuex
 __end_of_Interrupts_init FC2 0 CODE 0 text14 dist/default/production\mini-proj-xuexianlim.X.production.o
 ___awdiv@dividend A 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 __size_of_SunPleaseFixTheDamnClock 0 0 ABS 0 - dist/default/production\mini-proj-xuexianlim.X.production.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\mini-proj-xuexianlim.X.production.o
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\mini-proj-xuexianlim.X.production.o
 main@DST 3A 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
@@ -439,7 +439,7 @@ _TRISGbits F87 0 ABS 0 - dist/default/production\mini-proj-xuexianlim.X.producti
 _TRISHbits F88 0 ABS 0 - dist/default/production\mini-proj-xuexianlim.X.production.o
 ___rparam_used 1 0 ABS 0 - dist/default/production\mini-proj-xuexianlim.X.production.o
 __end_of_SunPleaseFixTheDamnClock 808 0 CODE 0 text6 dist/default/production\mini-proj-xuexianlim.X.production.o
-isa$xinst 0 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+isa$xinst 0 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 UpdateDawnDusk@pminute B 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 _TimeAvg 98E 0 CODE 0 text7 dist/default/production\mini-proj-xuexianlim.X.production.o
 __Hbank0 0 0 ABS 0 bank0 dist/default/production\mini-proj-xuexianlim.X.production.o
@@ -480,7 +480,7 @@ __Hbank13 0 0 ABS 0 bank13 dist/default/production\mini-proj-xuexianlim.X.produc
 UpdateDawnDusk@pduskhour 5 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\mini-proj-xuexianlim.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production\mini-proj-xuexianlim.X.production.o
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 __Hcomram 0 0 ABS 0 comram dist/default/production\mini-proj-xuexianlim.X.production.o
 __Hconfig 30000C 0 CONFIG 4 config dist/default/production\mini-proj-xuexianlim.X.production.o
 UpdateDawnDusk@pdawnhour 1 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
@@ -602,11 +602,11 @@ __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\mini-proj-xuexianlim.X.pro
 main@year 37 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 main@month 44 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\mini-proj-xuexianlim.X.production.o
-isa$std 1 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+isa$std 1 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 Timekeeper@pDST 17 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 Timekeeper@pday F 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
-stackhi DE9 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
-stacklo 60 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+stackhi DE9 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
+stacklo 60 0 ABS 0 - C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 SunPleaseFixTheDamnClock@phour 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production\mini-proj-xuexianlim.X.production.o
 __Lintret 0 0 ABS 0 intret dist/default/production\mini-proj-xuexianlim.X.production.o
@@ -659,7 +659,7 @@ __Ltext13 0 0 ABS 0 text13 dist/default/production\mini-proj-xuexianlim.X.produc
 __Ltext14 0 0 ABS 0 text14 dist/default/production\mini-proj-xuexianlim.X.production.o
 __Ltext15 0 0 ABS 0 text15 dist/default/production\mini-proj-xuexianlim.X.production.o
 __Ltext16 0 0 ABS 0 text16 dist/default/production\mini-proj-xuexianlim.X.production.o
-__ramtop E00 0 RAM 0 ramtop C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs2g6k.o
+__ramtop E00 0 RAM 0 ramtop C:\Users\LIMXUE~1\AppData\Local\Temp\xcAs3104.o
 main@minute 45 0 COMRAM 1 cstackCOMRAM dist/default/production\mini-proj-xuexianlim.X.production.o
 __Lpowerup 5A 0 CODE 0 powerup dist/default/production\mini-proj-xuexianlim.X.production.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\mini-proj-xuexianlim.X.production.o

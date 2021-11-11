@@ -47,6 +47,6 @@ void SmallHours(int hour, int minute, int dawnhour)
     }
         
     if (hour == 5 && minute == 0) { //at 5 am
-        LIGHTS = CM1CON0bits.OUT;
+        LIGHTS = CM1CON0bits.OUT; //switch on lights if dark, leave lights off if bright
     }
 }
